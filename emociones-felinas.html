@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenguaje Felino Interactivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: Este componente aislado se centra únicamente en la sección de 'Lenguaje Felino'. La estructura es un diseño de dos columnas en pantallas grandes: a la izquierda, una cuadrícula de tarjetas interactivas que representan señales corporales; a la derecha, un gráfico de radar que se actualiza dinámicamente. Esta arquitectura visualiza la conexión causa-efecto entre una señal corporal y el estado emocional del gato, facilitando un aprendizaje rápido e interactivo. -->
+    <!-- Visualization & Content Choices: La información del lenguaje corporal se presenta a través de tarjetas clicables (HTML/JS), que es más atractivo que el texto estático. La interacción clave es que al hacer clic en una tarjeta se actualiza un gráfico de radar de Chart.js. Este gráfico (Barómetro Emocional) es la visualización central, traduciendo conceptos abstractos (emociones) en datos visuales comparables, lo que mejora drásticamente la comprensión y retención de la información. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            background-color: #F8F7F4;
+            color: #3a3a3a;
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .cat-lang-card {
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .cat-lang-card.selected {
+            border-color: #A68A64;
+            transform: scale(1.05) translateY(-5px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-5xl">
+        <main>
+            <section id="lenguaje-felino">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-[#A68A64]">Entendiendo el Lenguaje Corporal</h1>
+                    <p class="text-md sm:text-lg text-gray-600 mt-2">Selecciona una señal para ver qué te quiere decir y cómo se siente.</p>
+                </div>
+                <div class="lg:flex lg:gap-8 lg:items-center">
+                    <div class="lg:w-1/2">
+                        <div id="cat-language-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
+                    </div>
+                    <div class="lg:w-1/2 mt-8 lg:mt-0 flex flex-col items-center">
+                        <h3 class="font-bold text-xl text-gray-700 mb-2">Barómetro Emocional Felino</h3>
+                        <div class="chart-container">
+                            <canvas id="catEmotionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+ <section id="explicacion-diagrama" class="mt-12">
+                <div class="card p-6 md:p-8 bg-white border border-gray-200">
+                    <h3 class="font-bold text-xl text-gray-800 mb-3">Entendiendo el Barómetro Emocional (Gráfico de Radar)</h3>
+                    <div class="space-y-2 text-gray-600">
+                        <p>Este diagrama, conocido como <strong>gráfico de radar</strong> o 'gráfico de araña', es una herramienta visual para entender el estado emocional de tu gato de un vistazo.</p>
+                        <p>Imagina que el centro es el "punto cero". Cada eje (Felicidad, Confianza, etc.) representa una emoción. Cuanto <strong>más lejos del centro</strong> está un punto, <strong>más intenso</strong> es ese sentimiento.</p>
+                        <p>La figura que se forma al unir los puntos te da una "fotografía" del estado de ánimo general. Una forma amplia y expandida es positiva, mientras que los picos en 'Miedo' o 'Irritación' son señales de alerta.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const catLanguageData = [
+        { id: 'cola-feliz', name: 'Cola Erguida', icon: '❓', emotion: { felicidad: 5, confianza: 5, miedo: 0, irritacion: 0, interes: 3 }, description: "Un saludo amistoso y de confianza. El gato se alegra de verte." },
+        { id: 'cola-miedo', name: 'Cola Baja/Erizada', icon: '⚡', emotion: { felicidad: 0, confianza: 0, miedo: 5, irritacion: 3, interes: 1 }, description: "Señal de miedo intenso. El gato intenta parecer más grande o se somete." },
+        { id: 'cola-irritable', name: 'Cola con Latigazos', icon: '💢', emotion: { felicidad: 0, confianza: 1, miedo: 2, irritacion: 5, interes: 2 }, description: "Advertencia de irritación o sobreestimulación. Pide espacio." },
+        { id: 'orejas-relax', name: 'Orejas Normales', icon: '👂', emotion: { felicidad: 4, confianza: 4, miedo: 0, irritacion: 0, interes: 4 }, description: "Relajado pero atento a su entorno. Estado neutral y positivo." },
+        { id: 'orejas-alerta', name: 'Orejas de Avión', icon: '✈️', emotion: { felicidad: 0, confianza: 0, miedo: 5, irritacion: 4, interes: 2 }, description: "Señal defensiva de miedo o agresión. El gato está muy estresado." },
+        { id: 'ojos-amor', name: 'Parpadeo Lento', icon: '😍', emotion: { felicidad: 5, confianza: 5, miedo: 0, irritacion: 0, interes: 1 }, description: "El 'beso de gato'. Una muestra máxima de confianza y afecto." },
+        { id: 'ojos-miedo', name: 'Pupilas Dilatadas', icon: '⚫', emotion: { felicidad: 1, confianza: 0, miedo: 5, irritacion: 2, interes: 5 }, description: "Puede ser por miedo, excitación o poca luz. El contexto es clave." },
+        { id: 'ronroneo', name: 'Ronroneo', icon: '🎶', emotion: { felicidad: 5, confianza: 4, miedo: 1, irritacion: 0, interes: 2 }, description: "Generalmente indica contento, pero también puede ser para calmarse si siente dolor." },
+        { id: 'gruñido', name: 'Gruñido/Bufido', icon: '😠', emotion: { felicidad: 0, confianza: 0, miedo: 3, irritacion: 5, interes: 1 }, description: "Advertencia clara y defensiva. Significa 'aléjate'." },
+    ];
+
+    let catEmotionChart;
+
+    function renderCatLanguage() {
+        const grid = document.getElementById('cat-language-grid');
+        grid.innerHTML = catLanguageData.map(lang => `
+            <div class="cat-lang-card card p-4 flex flex-col items-center justify-center text-center h-full" data-id="${lang.id}">
+                <div class="text-4xl mb-2">${lang.icon}</div>
+                <h4 class="font-semibold text-gray-800">${lang.name}</h4>
+            </div>
+        `).join('');
+
+        grid.querySelectorAll('.cat-lang-card').forEach(card => {
+            card.addEventListener('click', () => {
+                grid.querySelectorAll('.cat-lang-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                const langData = catLanguageData.find(l => l.id === card.dataset.id);
+                updateCatEmotionChart(langData);
+            });
+        });
+    }
+
+    function initCatEmotionChart() {
+        const ctx = document.getElementById('catEmotionChart').getContext('2d');
+        const initialData = catLanguageData.find(d => d.id === 'orejas-relax');
+        
+        catEmotionChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Felicidad', 'Confianza', 'Miedo', 'Irritación', 'Interés'],
+                datasets: [{
+                    label: initialData.name,
+                    data: Object.values(initialData.emotion),
+                    backgroundColor: 'rgba(166, 138, 100, 0.2)',
+                    borderColor: 'rgba(166, 138, 100, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(166, 138, 100, 1)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(166, 138, 100, 0.3)' },
+                        grid: { color: 'rgba(166, 138, 100, 0.3)' },
+                        pointLabels: {
+                            font: { size: 13, weight: 'bold' },
+                            color: '#3a3a3a'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            max: 5,
+                            stepSize: 1,
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].dataset.label;
+                            },
+                             afterBody: function(context) {
+                                const emotionData = catLanguageData.find(d => d.name === context[0].dataset.label);
+                                return emotionData ? emotionData.description : '';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Select initial card
+        document.querySelector(`.cat-lang-card[data-id="${initialData.id}"]`).classList.add('selected');
+    }
+
+    function updateCatEmotionChart(emotionData) {
+        catEmotionChart.data.datasets[0].data = Object.values(emotionData.emotion);
+        catEmotionChart.data.datasets[0].label = emotionData.name;
+        catEmotionChart.update();
+    }
+
+    renderCatLanguage();
+    initCatEmotionChart();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva de Bienestar Felino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: He diseñado la aplicación con una estructura de pestañas de navegación superior para un acceso inmediato y no lineal a la información crítica. Las secciones son: 'Urgencias', 'Primeros Auxilios', 'Lenguaje Felino', 'Checklist Diario' y 'Guía'. Esta arquitectura prioriza las tareas del usuario; una persona en una situación de pánico puede ir directamente a 'Urgencias' sin tener que desplazarse por contenido menos crítico. El flujo está diseñado para pasar de la acción inmediata (Urgencias) a la acción práctica (Primeros Auxilios), al aprendizaje (Lenguaje Felino) y finalmente a la rutina (Checklist), creando una herramienta multifuncional en lugar de un documento pasivo. -->
+    <!-- Visualization & Content Choices: He transformado el texto estático en componentes interactivos. 'Urgencias' y 'Primeros Auxilios' usan tarjetas y acordeones colapsables (HTML/JS) para presentar información de forma clara y enfocada. 'Lenguaje Felino' utiliza tarjetas interactivas que, al hacer clic, actualizan un gráfico de radar de Chart.js para visualizar el estado emocional del gato, convirtiendo la lectura en una experiencia de aprendizaje visual. El 'Checklist Diario' es una lista con casillas de verificación funcionales y una barra de progreso (HTML/CSS/JS) para un uso práctico. 'Guía' presenta el texto introductorio en un formato limpio. Esta selección de componentes busca maximizar la claridad, el compromiso y la utilidad para el cuidador de gatos. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            background-color: #F8F7F4;
+            color: #3a3a3a;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .nav-link.active {
+            border-bottom-color: #A68A64;
+            color: #A68A64;
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .accordion-button.open + .accordion-content {
+            max-height: 1000px;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .progress-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 9999px;
+            overflow: hidden;
+            height: 1.5rem;
+        }
+        .progress-bar {
+            background-color: #6A994E;
+            transition: width 0.5s ease-in-out;
+            height: 100%;
+        }
+        .cat-lang-card {
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .cat-lang-card.selected {
+            border-color: #A68A64;
+            transform: scale(1.05);
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-5xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-[#A68A64]">Kit Interactivo del Cat Nanny</h1>
+            <p class="text-md sm:text-lg text-gray-600 mt-2">Guía Rápida de Primeros Auxilios y Bienestar Felino</p>
+        </header>
+
+        <nav class="flex flex-wrap justify-center border-b border-gray-200 mb-8">
+            <a class="nav-link" data-tab="urgencias">🚨 Urgencias</a>
+            <a class="nav-link" data-tab="primeros-auxilios">🩹 Primeros Auxilios</a>
+            <a class="nav-link" data-tab="lenguaje-felino">🐾 Lenguaje Felino</a>
+            <a class="nav-link" data-tab="checklist">✅ Checklist Diario</a>
+            <a class="nav-link" data-tab="guia">📚 Guía</a>
+        </nav>
+
+        <main>
+            <section id="urgencias" class="content-section">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Identificación de Emergencias</h2>
+                    <p class="text-gray-600 mt-1">Estas señales requieren atención veterinaria INMEDIATA. Tu calma es crucial.</p>
+                </div>
+                <div id="emergencies-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </section>
+
+            <section id="primeros-auxilios" class="content-section">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Primeros Auxilios Básicos</h2>
+                    <p class="text-gray-600 mt-1">Qué hacer en situaciones menores mientras contactas a tu veterinario.</p>
+                </div>
+                <div id="first-aid-accordion" class="space-y-4"></div>
+            </section>
+
+            <section id="lenguaje-felino" class="content-section">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Entendiendo el Lenguaje Corporal</h2>
+                    <p class="text-gray-600 mt-1">Selecciona una señal para ver qué te quiere decir y cómo se siente.</p>
+                </div>
+                <div class="lg:flex lg:gap-8">
+                    <div class="lg:w-1/2">
+                        <div id="cat-language-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
+                    </div>
+                    <div class="lg:w-1/2 mt-8 lg:mt-0 flex flex-col items-center">
+                        <h3 class="font-bold text-lg text-gray-700 mb-2">Barómetro Emocional Felino</h3>
+                        <div class="chart-container">
+                            <canvas id="catEmotionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="checklist" class="content-section">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Checklist de Bienestar Diario</h2>
+                    <p class="text-gray-600 mt-1">Una rutina de cuidados es la mejor prevención. Marca las tareas completadas.</p>
+                </div>
+                <div class="mb-4">
+                    <div class="progress-bar-container">
+                        <div id="checklist-progress-bar" class="progress-bar text-center text-white font-bold leading-6"></div>
+                    </div>
+                </div>
+                <div id="daily-checklist" class="bg-white rounded-lg p-6 shadow-sm"></div>
+                 <div class="text-center mt-6">
+                    <button id="reset-checklist" class="bg-[#A68A64] text-white font-bold py-2 px-4 rounded-lg hover:bg-opacity-80 transition">Reiniciar Checklist</button>
+                </div>
+            </section>
+            
+            <section id="guia" class="content-section">
+                 <div class="bg-white rounded-lg p-6 sm:p-8 shadow-sm prose max-w-none">
+                    <h2 class="text-2xl font-bold text-gray-800">¡Preparado para Cualquier Situación Felina!</h2>
+                    <p>¡Bienvenido/a al mundo del cuidado felino! Ser responsable de un gato es un privilegio maravilloso que nos conecta con criaturas fascinantes y llenas de personalidad. Esta responsabilidad incluye velar por su seguridad y bienestar en todo momento.</p>
+                    <p>El propósito de esta guía no es convertirte en veterinario, sino empoderarte con el conocimiento esencial para actuar con calma y eficacia. Queremos transformar la ansiedad que puede surgir ante un imprevisto en una confianza informada. Aquí aprenderás a identificar señales de alerta, a aplicar primeros auxilios básicos para situaciones menores y, lo más importante, a reconocer sin dudar cuándo es crucial buscar ayuda veterinaria profesional.</p>
+                    <hr class="my-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Tu Compromiso, su Bienestar</h2>
+                    <p>¡Enhorabuena! Al usar esta guía, demuestras un compromiso admirable con el bienestar de los felinos a tu cargo. Recuerda que la observación atenta, la comprensión de su lenguaje y mantener la calma son tus mejores aliados.</p>
+                    <p>Esta herramienta te proporciona una base sólida, pero no reemplaza el consejo de un veterinario. Eres un socio informado y proactivo en su cuidado.</p>
+                    <p class="font-semibold text-[#A68A64]">Si esta guía ha despertado tu curiosidad y deseas llevar tus habilidades al siguiente nivel, te invitamos a explorar cursos de certificación profesional para Cat Nanny.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const data = {
+        emergencies: [
+            { title: "Dificultad para Respirar", icon: "💨", details: "Signos: jadeo, boca abierta, cuello estirado, encías azuladas. Puede indicar problemas cardíacos, asma o trauma. Es una emergencia de máxima prioridad.", urgent: true },
+            { title: "Letargo Extremo o Colapso", icon: "🔋", details: "Signos: apatía total, no responde a estímulos, incapacidad para levantarse. Puede ser por hemorragia interna, fallo orgánico o intoxicación.", urgent: true },
+            { title: "Vómitos/Diarrea Persistentes", icon: "🤢", details: "Signos: vómitos repetidos en poco tiempo, no retiene agua, presencia de sangre. Riesgo alto de deshidratación. Puede ser obstrucción o intoxicación.", urgent: true },
+            { title: "Problemas Urinarios (Machos)", icon: "💧", details: "¡ALERTA MÁXIMA! Va al arenero, se esfuerza, maúlla de dolor y no orina. Es una obstrucción uretral mortal. No confundir con estreñimiento.", urgent: true },
+            { title: "Sangrado Abundante", icon: "🩸", details: "Cualquier sangrado que no se detiene después de aplicar presión directa durante 3-5 minutos. Requiere intervención inmediata.", urgent: true },
+            { title: "Convulsiones o Temblores", icon: "🌀", details: "Movimientos incontrolados, pérdida de conciencia. Mantén al gato seguro, alejado de objetos, y contacta al veterinario.", urgent: true },
+            { title: "Posible Intoxicación", icon: "☠️", details: "Si sospechas que ha ingerido una planta tóxica, un químico o un medicamento. Lleva el envase o una foto del producto al veterinario.", urgent: true },
+            { title: "Traumatismo Grave", icon: "💥", details: "Caídas desde altura, atropellos, peleas graves. Aunque parezca estar bien, puede tener lesiones internas muy serias.", urgent: true },
+        ],
+        firstAid: [
+            {
+                title: "Atragantamiento Leve",
+                icon: "🗣️",
+                content: `
+                    <p class="mb-2">Ocurre cuando el gato tose y hace ruidos, pero el aire aún pasa. Tu calma es esencial.</p>
+                    <ol class="list-decimal list-inside space-y-2">
+                        <li><strong>Mantén la calma y observa:</strong> La tos es el mecanismo más eficaz. No interfieras si puede respirar.</li>
+                        <li><strong>No metas los dedos a ciegas:</strong> Podrías empeorar la situación o recibir un mordisco.</li>
+                        <li><strong>Inspección visual (si te lo permite):</strong> Abre su boca con cuidado. Si ves el objeto y es fácil de retirar con pinzas de punta roma, hazlo. Si no, acude al veterinario.</li>
+                    </ol>`
+            },
+            {
+                title: "Cortes Pequeños / Heridas Superficiales",
+                icon: "🩹",
+                content: `
+                    <ol class="list-decimal list-inside space-y-2 mb-4">
+                        <li><strong>Controla el sangrado:</strong> Aplica presión directa y firme con una gasa estéril durante 3 minutos sin levantarla.</li>
+                        <li><strong>Limpia la herida:</strong> Irriga con abundante suero fisiológico para arrastrar suciedad.</li>
+                        <li><strong>Desinfecta:</strong> Usa una gasa limpia con un antiséptico suave como la clorhexidina diluida.</li>
+                        <li><strong>Protege la herida:</strong> Un collar isabelino es la mejor opción para evitar que se lama e infecte la zona.</li>
+                    </ol>
+                    <div class="p-4 rounded-lg bg-[#BC4749] text-white">
+                        <h4 class="font-bold">¡ADVERTENCIA IMPORTANTE!</h4>
+                        <p><strong>NUNCA uses alcohol ni agua oxigenada</strong> en una herida abierta. Dañan el tejido sano y retrasan la cicatrización.</p>
+                    </div>`
+            },
+            {
+                title: "Signos de Deshidratación",
+                icon: "🌵",
+                content: `
+                    <p class="mb-2">La deshidratación puede agravarse rápidamente. Aprende a identificarla y actuar en casos leves.</p>
+                    <h4 class="font-bold mb-2">Cómo identificarla:</h4>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>Test del pliegue cutáneo:</strong> Pellizca suavemente la piel de su espalda. Si tarda en volver a su sitio, es un signo de deshidratación.</li>
+                        <li><strong>Revisión de las encías:</strong> Deben estar rosadas y húmedas. Si están pálidas, secas o pegajosas, es otro signo de alerta.</li>
+                    </ul>
+                    <h4 class="font-bold mb-2">Qué hacer (casos leves):</h4>
+                    <ul class="list-disc list-inside space-y-2">
+                         <li>Asegúrate de que tenga varios puntos de acceso a agua fresca y limpia.</li>
+                         <li>Ofrécele comida húmeda, que tiene un alto contenido de agua.</li>
+                         <li>Añade un cubito de hielo a su cuenco o usa una fuente para gatos para incitarle a beber.</li>
+                    </ul>`
+            }
+        ],
+        checklist: [
+            { id: "agua", text: "Agua Fresca y Limpia", details: "Cuencos limpios y rellenados. ¿Bebió normal?" },
+            { id: "comida", text: "Comida a sus Horas", details: "Servir porción correcta. ¿Comió con apetito?" },
+            { id: "arenero", text: "Arenero Impecable", details: "Retirar desechos. ¿Orina y heces normales?" },
+            { id: "juego", text: "Tiempo de Juego e Interacción", details: "Mínimo 15 min. de juego interactivo. ¿Muestra energía?" },
+            { id: "cepillado", text: "Cepillado (según pelo)", details: "Revisar nudos, piel, parásitos." },
+            { id: "revision", text: "Revisión de Estado General", details: "Observar ojos, oídos y comportamiento." },
+            { id: "entorno", text: "Entorno Seguro y Estimulante", details: "Ventanas protegidas, sin plantas tóxicas, rascadores OK." }
+        ],
+        catLanguage: [
+            { id: 'cola-feliz', name: 'Cola Erguida', icon: '❓', emotion: { felicidad: 5, confianza: 5, miedo: 0, irritacion: 0, interes: 3 }},
+            { id: 'cola-miedo', name: 'Cola Baja/Erizada', icon: '⚡', emotion: { felicidad: 0, confianza: 0, miedo: 5, irritacion: 3, interes: 1 }},
+            { id: 'cola-irritable', name: 'Cola con Latigazos', icon: '💢', emotion: { felicidad: 0, confianza: 1, miedo: 2, irritacion: 5, interes: 2 }},
+            { id: 'orejas-relax', name: 'Orejas Normales', icon: '👂', emotion: { felicidad: 4, confianza: 4, miedo: 0, irritacion: 0, interes: 4 }},
+            { id: 'orejas-alerta', name: 'Orejas de Avión', icon: '✈️', emotion: { felicidad: 0, confianza: 0, miedo: 5, irritacion: 4, interes: 2 }},
+            { id: 'ojos-amor', name: 'Parpadeo Lento', icon: '😍', emotion: { felicidad: 5, confianza: 5, miedo: 0, irritacion: 0, interes: 1 }},
+            { id: 'ojos-miedo', name: 'Pupilas Dilatadas', icon: '⚫', emotion: { felicidad: 1, confianza: 0, miedo: 5, irritacion: 2, interes: 5 }},
+            { id: 'ronroneo', name: 'Ronroneo', icon: '🎶', emotion: { felicidad: 5, confianza: 4, miedo: 1, irritacion: 0, interes: 2 }},
+            { id: 'gruñido', name: 'Gruñido/Bufido', icon: '😠', emotion: { felicidad: 0, confianza: 0, miedo: 3, irritacion: 5, interes: 1 }},
+        ]
+    };
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const contentSections = document.querySelectorAll('.content-section');
+    let catEmotionChart;
+
+    function init() {
+        renderEmergencies();
+        renderFirstAid();
+        renderChecklist();
+        renderCatLanguage();
+        initCatEmotionChart();
+        updateChecklistProgress();
+        setActiveTab('urgencias');
+    }
+
+    function setActiveTab(tabId) {
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.dataset.tab === tabId);
+        });
+        contentSections.forEach(section => {
+            section.classList.toggle('active', section.id === tabId);
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => setActiveTab(link.dataset.tab));
+    });
+
+    function renderEmergencies() {
+        const grid = document.getElementById('emergencies-grid');
+        grid.innerHTML = data.emergencies.map(item => `
+            <div class="card p-5 text-center">
+                <div class="text-4xl mb-3">${item.icon}</div>
+                <h3 class="text-lg font-bold mb-2 text-gray-800">${item.title}</h3>
+                <p class="text-gray-600 mb-4">${item.details}</p>
+                <div class="p-3 rounded-lg bg-[#BC4749] text-white font-bold">
+                    ¡LLAMA AL VETERINARIO!
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderFirstAid() {
+        const accordion = document.getElementById('first-aid-accordion');
+        accordion.innerHTML = data.firstAid.map((item, index) => `
+            <div class="card overflow-hidden">
+                <button class="accordion-button w-full text-left p-5 flex justify-between items-center" data-index="${index}">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-4">${item.icon}</span>
+                        <h3 class="text-lg font-bold text-gray-800">${item.title}</h3>
+                    </div>
+                    <span class="transform transition-transform text-2xl text-[#A68A64]">+</span>
+                </button>
+                <div class="accordion-content px-5 pb-5">
+                    ${item.content}
+                </div>
+            </div>
+        `).join('');
+
+        accordion.querySelectorAll('.accordion-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const wasOpen = button.classList.contains('open');
+                accordion.querySelectorAll('.accordion-button').forEach(b => {
+                    b.classList.remove('open');
+                    b.querySelector('span.transform').classList.remove('rotate-45');
+                });
+                if (!wasOpen) {
+                    button.classList.add('open');
+                    button.querySelector('span.transform').classList.add('rotate-45');
+                }
+            });
+        });
+    }
+    
+    function renderChecklist() {
+        const checklistContainer = document.getElementById('daily-checklist');
+        checklistContainer.innerHTML = data.checklist.map(item => `
+            <label for="${item.id}" class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition cursor-pointer">
+                <input type="checkbox" id="${item.id}" class="h-5 w-5 rounded border-gray-300 text-[#6A994E] focus:ring-[#A68A64] checklist-item">
+                <div class="ml-4">
+                    <span class="font-semibold text-gray-700">${item.text}</span>
+                    <p class="text-sm text-gray-500">${item.details}</p>
+                </div>
+            </label>
+        `).join('');
+
+        document.querySelectorAll('.checklist-item').forEach(item => {
+            item.addEventListener('change', updateChecklistProgress);
+        });
+        
+        document.getElementById('reset-checklist').addEventListener('click', () => {
+            document.querySelectorAll('.checklist-item').forEach(item => {
+                item.checked = false;
+            });
+            updateChecklistProgress();
+        });
+    }
+
+    function updateChecklistProgress() {
+        const items = document.querySelectorAll('.checklist-item');
+        const checkedItems = document.querySelectorAll('.checklist-item:checked');
+        const progress = (checkedItems.length / items.length) * 100;
+        const progressBar = document.getElementById('checklist-progress-bar');
+        progressBar.style.width = `${progress}%`;
+        progressBar.textContent = `${Math.round(progress)}%`;
+    }
+
+    function renderCatLanguage() {
+        const grid = document.getElementById('cat-language-grid');
+        grid.innerHTML = data.catLanguage.map(lang => `
+            <div class="cat-lang-card card p-4 flex flex-col items-center justify-center text-center" data-id="${lang.id}">
+                <div class="text-3xl mb-2">${lang.icon}</div>
+                <h4 class="font-semibold">${lang.name}</h4>
+            </div>
+        `).join('');
+
+        grid.querySelectorAll('.cat-lang-card').forEach(card => {
+            card.addEventListener('click', () => {
+                grid.querySelectorAll('.cat-lang-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                const langData = data.catLanguage.find(l => l.id === card.dataset.id);
+                updateCatEmotionChart(langData.emotion);
+            });
+        });
+    }
+
+    function initCatEmotionChart() {
+        const ctx = document.getElementById('catEmotionChart').getContext('2d');
+        const initialEmotion = { felicidad: 3, confianza: 3, miedo: 0, irritacion: 0, interes: 3 };
+        
+        catEmotionChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Felicidad', 'Confianza', 'Miedo', 'Irritación', 'Interés'],
+                datasets: [{
+                    label: 'Nivel Emocional',
+                    data: Object.values(initialEmotion),
+                    backgroundColor: 'rgba(106, 153, 78, 0.2)',
+                    borderColor: 'rgba(106, 153, 78, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(106, 153, 78, 1)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(166, 138, 100, 0.3)'
+                        },
+                        grid: {
+                            color: 'rgba(166, 138, 100, 0.3)'
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            color: '#3a3a3a'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            max: 5,
+                            stepSize: 1,
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    function updateCatEmotionChart(emotionData) {
+        catEmotionChart.data.datasets[0].data = Object.values(emotionData);
+        catEmotionChart.update();
+    }
+
+    init();
+});
+</script>
+</body>
+</html>

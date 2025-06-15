@@ -87,15 +87,15 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const catLanguageData = [
-        { id: 'cola-feliz', name: 'Cola Erguida', icon: '❓', emotion: { felicidad: 5, confianza: 5, miedo: 0, irritacion: 0, interes: 3 }, description: "Un saludo amistoso y de confianza. El gato se alegra de verte." },
-        { id: 'cola-miedo', name: 'Cola Baja/Erizada', icon: '⚡', emotion: { felicidad: 0, confianza: 0, miedo: 5, irritacion: 3, interes: 1 }, description: "Señal de miedo intenso. El gato intenta parecer más grande o se somete." },
-        { id: 'cola-irritable', name: 'Cola con Latigazos', icon: '💢', emotion: { felicidad: 0, confianza: 1, miedo: 2, irritacion: 5, interes: 2 }, description: "Advertencia de irritación o sobreestimulación. Pide espacio." },
-        { id: 'orejas-relax', name: 'Orejas Normales', icon: '👂', emotion: { felicidad: 4, confianza: 4, miedo: 0, irritacion: 0, interes: 4 }, description: "Relajado pero atento a su entorno. Estado neutral y positivo." },
-        { id: 'orejas-alerta', name: 'Orejas de Avión', icon: '✈️', emotion: { felicidad: 0, confianza: 0, miedo: 5, irritacion: 4, interes: 2 }, description: "Señal defensiva de miedo o agresión. El gato está muy estresado." },
-        { id: 'ojos-amor', name: 'Parpadeo Lento', icon: '😍', emotion: { felicidad: 5, confianza: 5, miedo: 0, irritacion: 0, interes: 1 }, description: "El 'beso de gato'. Una muestra máxima de confianza y afecto." },
-        { id: 'ojos-miedo', name: 'Pupilas Dilatadas', icon: '⚫', emotion: { felicidad: 1, confianza: 0, miedo: 5, irritacion: 2, interes: 5 }, description: "Puede ser por miedo, excitación o poca luz. El contexto es clave." },
-        { id: 'ronroneo', name: 'Ronroneo', icon: '🎶', emotion: { felicidad: 5, confianza: 4, miedo: 1, irritacion: 0, interes: 2 }, description: "Generalmente indica contento, pero también puede ser para calmarse si siente dolor." },
-        { id: 'gruñido', name: 'Gruñido/Bufido', icon: '😠', emotion: { felicidad: 0, confianza: 0, miedo: 3, irritacion: 5, interes: 1 }, description: "Advertencia clara y defensiva. Significa 'aléjate'." },
+        { id: 'cola-feliz', name: 'Cola Erguida', icon: 'images/cola-erguida.png', emotion: { felicidad: 5, confianza: 5, miedo: 0, irritacion: 0, interes: 3 }, description: "Un saludo amistoso y de confianza. El gato se alegra de verte." },
+        { id: 'cola-miedo', name: 'Cola Baja/Erizada', icon: 'images/cola-baja.png', emotion: { felicidad: 0, confianza: 0, miedo: 5, irritacion: 3, interes: 1 }, description: "Señal de miedo intenso. El gato intenta parecer más grande o se somete." },
+        { id: 'cola-irritable', name: 'Cola con Latigazos', icon: 'images/cola-latigo.png', emotion: { felicidad: 0, confianza: 1, miedo: 2, irritacion: 5, interes: 2 }, description: "Advertencia de irritación o sobreestimulación. Pide espacio." },
+        { id: 'orejas-relax', name: 'Orejas Normales', icon: 'images/orejas-normales.png', emotion: { felicidad: 4, confianza: 4, miedo: 0, irritacion: 0, interes: 4 }, description: "Relajado pero atento a su entorno. Estado neutral y positivo." },
+        { id: 'orejas-alerta', name: 'Orejas de Avión', icon: 'images/orejas-avion.png', emotion: { felicidad: 0, confianza: 0, miedo: 5, irritacion: 4, interes: 2 }, description: "Señal defensiva de miedo o agresión. El gato está muy estresado." },
+        { id: 'ojos-amor', name: 'Parpadeo Lento', icon: 'images/parpadeo-lento.png', emotion: { felicidad: 5, confianza: 5, miedo: 0, irritacion: 0, interes: 1 }, description: "El 'beso de gato'. Una muestra máxima de confianza y afecto." },
+        { id: 'ojos-miedo', name: 'Pupilas Dilatadas', icon: 'images/pupilas-dilatadas.png', emotion: { felicidad: 1, confianza: 0, miedo: 5, irritacion: 2, interes: 5 }, description: "Puede ser por miedo, excitación o poca luz. El contexto es clave." },
+        { id: 'ronroneo', name: 'Ronroneo', icon: 'images/ronroneo.png', emotion: { felicidad: 5, confianza: 4, miedo: 1, irritacion: 0, interes: 2 }, description: "Generalmente indica contento, pero también puede ser para calmarse si siente dolor." },
+        { id: 'gruñido', name: 'Gruñido/Bufido', icon: 'images/bufido.png', emotion: { felicidad: 0, confianza: 0, miedo: 3, irritacion: 5, interes: 1 }, description: "Advertencia clara y defensiva. Significa 'aléjate'." },
     ];
 
     let catEmotionChart;
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const grid = document.getElementById('cat-language-grid');
         grid.innerHTML = catLanguageData.map(lang => `
             <div class="cat-lang-card card p-4 flex flex-col items-center justify-center text-center h-full" data-id="${lang.id}">
-                <div class="text-4xl mb-2">${lang.icon}</div>
+                <img src="${lang.icon}" alt="Icono de ${lang.name}" class="w-16 h-16 object-contain mb-2 mx-auto">
                 <h4 class="font-semibold text-gray-800">${lang.name}</h4>
             </div>
         `).join('');

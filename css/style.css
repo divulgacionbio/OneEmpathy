@@ -1,0 +1,129 @@
+
+/* =================================
+   KIT DE MARCA - OneEmpathy
+   ================================= */
+
+/* -- 1. Paleta de Colores (Variables) -- */
+:root {
+  --color-primario: #2a62a3;   /* El azul principal para títulos y logos*/
+  --color-secundario: #4aa678; /* El verde-azulado para fondos o detalles */
+  --color-acento: #99c932;     /* El verde lima para botones y llamadas a la acción */
+  --color-texto: #333333;      /* Gris oscuro para texto, más suave que el negro */
+  --color-fondo: #fdfdfd;      /* Un blanco ligeramente cálido */
+  --color-bordes: #eeeeee;     /* Un gris muy claro para líneas y bordes sutiles */
+
+}
+
+/* -- 2. Estilos Base Globales -- */
+body {
+  /* Aplicamos nuestros colores y fuentes a toda la página */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: 'Inter', sans-serif; /* Asegúrate de tener esta fuente en tu HTML */
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--color-primario);
+
+  /* Hacemos que todos los títulos usen nuestro color primario */
+  color: var(--color-primario);
+}
+
+/* ... aquí arriba está tu :root y tus estilos de body ... */
+
+
+/* ======================================= */
+/* --- Clases de Nuestro Kit de Marca --- */
+/* ======================================= */
+
+.texto-primario {
+  color: var(--color-primario); /* Para textos con tu azul principal */
+}
+
+.texto-secundario {
+  color: var(--color-secundario); /* Para textos con tu verde-azulado */
+}
+
+.fondo-secundario {
+  background-color: var(--color-secundario); /* Para fondos */
+}
+
+.boton-acento {
+  background-color: var(--color-acento); /* Para botones importantes */
+}
+
+/* ================================================= */
+/* --- Estilos para los Componentes de tu Página --- */
+/* ================================================= */
+
+.card {
+  /* Este es un estilo general para cualquier 'tarjeta' que puedas tener.
+     Por ahora no lo estamos usando directamente, pero es bueno tenerlo. */
+  background-color: var(--color-fondo);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 300px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.cat-lang-card {
+  /* Estilos para las tarjetas específicas del lenguaje felino */
+  background-color: var(--color-fondo); /* Usamos el blanco de tu kit */
+  border-radius: 0.75rem;
+  cursor: pointer;
+  border: 2px solid transparent; /* El borde es transparente por defecto */
+  transition: all 0.3s ease; /* Una transición suave para todos los efectos */
+
+  /* ¡Aquí aplicamos el Modelo de Caja! Puedes jugar con estos valores */
+  padding: 20px;  /* 20px de relleno INTERIOR */
+  /* margin: 10px; */  /* (Opcional) Margen exterior si quieres más separación */
+}
+
+.cat-lang-card h4 {
+  color: var(--color-secundario);
+} 
+
+.cat-lang-card:hover {
+  transform: translateY(-5px); /* La levantamos un poco al pasar el ratón */
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.cat-lang-card.selected {
+  /* Cuando una tarjeta es seleccionada, usamos el color primario de tu marca */
+  border-color: var(--color-primario); 
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+
+/* ======================================= */
+/* --- Estilos para el Footer de Marca  --- */
+/* ======================================= */
+
+.footer-marca {
+  /* Reemplazamos 'bg-gray-800' con tu color primario */
+  background-color: var(--color-primario); 
+  
+  /* Reemplazamos 'text-white' con tu color de fondo (que es blanco/claro) */
+  color: var(--color-fondo);
+  
+  /* Reemplazamos las clases de Tailwind 'mt-20', 'py-8' y 'text-center' */
+  margin-top: 5rem;  /* 5rem es similar a mt-20 de Tailwind */
+  padding: 2rem 0;   /* 2rem arriba/abajo es similar a py-8 */
+  text-align: center;
+}
+
+/* Creamos un estilo para el texto secundario del footer */
+.footer-marca .subtexto {
+  font-size: 0.875rem; /* similar a 'text-sm' */
+  /* Hacemos el color un poco transparente para un efecto más sutil */
+  color: rgba(255, 255, 255, 0.7); 
+}

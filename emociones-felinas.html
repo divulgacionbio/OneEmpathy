@@ -6,47 +6,17 @@
     <title>Lenguaje Felino Interactivo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
     
     <!-- Chosen Palette: Calm Harmony -->
     <!-- Application Structure Plan: Este componente aislado se centra únicamente en la sección de 'Lenguaje Felino'. La estructura es un diseño de dos columnas en pantallas grandes: a la izquierda, una cuadrícula de tarjetas interactivas que representan señales corporales; a la derecha, un gráfico de radar que se actualiza dinámicamente. Esta arquitectura visualiza la conexión causa-efecto entre una señal corporal y el estado emocional del gato, facilitando un aprendizaje rápido e interactivo. -->
     <!-- Visualization & Content Choices: La información del lenguaje corporal se presenta a través de tarjetas clicables (HTML/JS), que es más atractivo que el texto estático. La interacción clave es que al hacer clic en una tarjeta se actualiza un gráfico de radar de Chart.js. Este gráfico (Barómetro Emocional) es la visualización central, traduciendo conceptos abstractos (emociones) en datos visuales comparables, lo que mejora drásticamente la comprensión y retención de la información. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
-    <style>
-        body {
-            background-color: #F8F7F4;
-            color: #3a3a3a;
-            font-family: 'Inter', sans-serif;
-        }
-        .card {
-            background-color: #ffffff;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
-        }
-        .chart-container {
-            position: relative;
-            margin: auto;
-            height: 300px;
-            width: 100%;
-            max-width: 400px;
-        }
-        .cat-lang-card {
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-        .cat-lang-card.selected {
-            border-color: #A68A64;
-            transform: scale(1.05) translateY(-5px);
-        }
-    </style>
+   
 </head>
 <body class="antialiased">
 
@@ -54,8 +24,8 @@
         <main>
             <section id="lenguaje-felino">
                 <div class="text-center mb-8">
-                    <h1 class="text-3xl sm:text-4xl font-bold text-[#A68A64]">Entendiendo el Lenguaje Corporal Felino</h1>
-                    <p class="text-md sm:text-lg text-gray-600 mt-2">Selecciona una señal para ver qué te quiere decir y cómo se siente.</p>
+                    <h1 class="text-3xl sm:text-4xl font-bold texto-primario">Entendiendo el Lenguaje Corporal Felino</h1>
+                    <p class="text-md sm:text-lg text-gray-600 mt-2">Selecciona una señal para traducir qué te quiere decir y cómo se siente.</p>
                 </div>
                 <div class="lg:flex lg:gap-8 lg:items-center">
                     <div class="lg:w-1/2">
@@ -72,15 +42,21 @@
         
  <section id="explicacion-diagrama" class="mt-12">
                 <div class="card p-6 md:p-8 bg-white border border-gray-200">
-                    <h3 class="font-bold text-xl text-gray-800 mb-3">Entendiendo el Barómetro Emocional (Gráfico de Radar)</h3>
+                    <h3 class="font-bold text-xl text-gray-800 mb-3">Explicación del Barómetro Emocional (Gráfico de Radar)</h3>
                     <div class="space-y-2 text-gray-600">
-                        <p>Este diagrama, conocido como <strong>gráfico de radar</strong> o 'gráfico de araña', es una herramienta visual para entender el estado emocional de tu gato de un vistazo.</p>
+                        <p>Este diagrama, conocido como <strong>gráfico de radar</strong> o 'gráfico de araña', es una herramienta visual para entender el estado emocional de tu gato de un vistazo. Existen muchas más emociones que exploraremos en el curso, las que ves acá son solo algunas de ellas.</p>
                         <p>Imagina que el centro es el "punto cero". Cada eje (Felicidad, Confianza, etc.) representa una emoción. Cuanto <strong>más lejos del centro</strong> está un punto, <strong>más intenso</strong> es ese sentimiento.</p>
                         <p>La figura que se forma al unir los puntos te da una "fotografía" del estado de ánimo general. Una forma amplia y expandida es positiva, mientras que los picos en 'Miedo' o 'Irritación' son señales de alerta.</p>
                     </div>
                 </div>
             </section>
         </main>
+<footer class="footer-marca">
+    <div class="container mx-auto px-6"> <p>&copy; 2024 ONE EMPATHY</p>
+        
+        <p class="subtexto">Herramienta del curso de formación "Maestría Cat Nanny" propiedad de One Empathy Foundation.</p>
+    </div>
+</footer>
     </div>
 
 <script>

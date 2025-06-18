@@ -1,0 +1,63 @@
+/* ================================================= */
+/* --- Estilos para los Componentes de la Página --- */
+/* ================================================= */
+
+/*-- Contenedor del Gráfico --*/
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 300px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/*-- Tarjetas Interactivas del Lenguaje Felino --*/
+.cat-lang-card {
+  /* Apariencia Base */
+  background-color: var(--color-fondo);
+  border-radius: 0.75rem; /* Bordes redondeados */
+  cursor: pointer;
+  
+  /* Borde y Transición */
+  border: 2px solid var(--color-bordes); /* Borde sutil por defecto de tu kit */
+  transition: all 0.3s ease; /* Transición suave para todos los efectos */
+  
+  /* Espaciado y Layout (Modelo de Caja) */
+  padding: 20px;
+  
+  /* Estructura Interna (Flexbox para centrar contenido) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 180px; /* Altura fija para que todas sean iguales */
+}
+
+/*-- Texto dentro de la tarjeta --*/
+.cat-lang-card h4 {
+  color: var(--color-secundario); /* Usamos tu color de marca verde-azulado */
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/*-- Imagen dentro de la tarjeta --*/
+.cat-lang-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain; /* Asegura que la imagen no se deforme */
+}
+
+/*-- Efecto al pasar el ratón --*/
+.cat-lang-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  border-color: var(--color-secundario); /* El borde cambia a tu color secundario */
+}
+
+/*-- Estilo para la tarjeta SELECCIONADA --*/
+.cat-lang-card.selected {
+  border-color: var(--color-primario); /* El borde usa tu color primario al seleccionar */
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}

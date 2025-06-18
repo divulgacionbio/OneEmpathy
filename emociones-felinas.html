@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/kit-marca.css">
+    <link rel="stylesheet" href="css/emociones2.css">
     
     <!-- Chosen Palette: Calm Harmony -->
     <!-- Application Structure Plan: Este componente aislado se centra únicamente en la sección de 'Lenguaje Felino'. La estructura es un diseño de dos columnas en pantallas grandes: a la izquierda, una cuadrícula de tarjetas interactivas que representan señales corporales; a la derecha, un gráfico de radar que se actualiza dinámicamente. Esta arquitectura visualiza la conexión causa-efecto entre una señal corporal y el estado emocional del gato, facilitando un aprendizaje rápido e interactivo. -->
@@ -18,7 +19,7 @@
 
    
 </head>
-<body class="antialiased">
+<body id="pagina-emociones" class="antialiased">
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-5xl">
         <main>
@@ -79,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderCatLanguage() {
         const grid = document.getElementById('cat-language-grid');
         grid.innerHTML = catLanguageData.map(lang => `
-            <div class="cat-lang-card card p-4 flex flex-col items-center justify-center text-center h-full" data-id="${lang.id}">
+            <div class="cat-lang-card data-id="${lang.id}">
                 <img src="${lang.icon}" alt="Icono de ${lang.name}" class="w-16 h-16 object-contain mb-2 mx-auto">
                 <h4 class="font-semibold text-gray-800">${lang.name}</h4>
             </div>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva para Cat Nanny Profesional</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/teaser.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Convierte tu amor por los gatos en un servicio<br>de cuidado profesional y ultra personalizado</h1>
+        <p>Pon a prueba tus habilidades con nuestra mini guía interactiva gratuita y descubre si tienes lo necesario.</p>
+    </header>
+
+    <main>
+        <section id="desafio-seguridad">
+            <div class="titulo-modulo">
+    <h1>El Desafío de seguridad</h1>
+    <p>Un cuidador profesional ve peligros que otros ignoran, incluso la familia.<br> <strong>Haz clic en los 5 objetos peligrosos</strong> para un gato en esta habitación.</p>
+</div>
+
+            <div id="juego-seguridad">
+                <img src="images/desafio-gatos.png" alt="Habitación con objetos para un desafío de seguridad felina.">
+
+                <div class="hotspot" data-item="1"></div>
+                <div class="hotspot" data-item="2"></div>
+                <div class="hotspot" data-item="3"></div>
+                <div class="hotspot" data-item="4"></div>
+                <div class="hotspot" data-item="5"></div>
+            </div>
+
+            <div id="feedback-seguridad">
+                <p>Peligros encontrados: <span id="contador">0</span> de 5</p>
+                <div id="mensaje-final" class="hidden">
+                    <h3>¡Excelente ojo de detective!</h3>
+                    <p>¡Encontraste todos los peligros! Un cuidador experto ve lo que otros no ven. En el <strong>curso completo</strong>, te enseñamos a hacer una 'Auditoría de Seguridad Profesional' en 10 minutos y te damos la <strong>lista completa de las 50 plantas más tóxicas</strong> para los felinos.</p>
+                </div>
+            </div>
+        </section>
+
+
+<section id="simulador-cliente">
+    <div class="titulo-modulo">
+    <h1>El Simulador de cliente</h1>
+    <p>Un profesional no solo cuida gatos, también gestiona clientes. <br>A continuación, una solicitud real. ¿Cómo responderías?</p>
+</div>
+
+    <div class="escenario">
+        <div class="mensaje-cliente">
+            <p><strong>De:</strong> Ana, cliente nueva</p>
+            <p>"Hola, encontré tu contacto online. Necesito un Cat Nanny para mis dos gatos: Mochi (un persa de 8 años muy tímido) y Loki (un siamés de 1 año lleno de energía). Estaré fuera 5 días."</p>
+        </div>
+
+        <p class="pregunta-clave">¿Cuál es la <strong>primera pregunta más importante</strong> que le haces a Ana?</p>
+    </div>
+
+    <div class="opciones-respuesta">
+        <button class="opcion" data-respuesta="correcta">"Cuéntame sobre las personalidades y rutinas de Mochi y Loki. ¿Tienen necesidades médicas o especiales?"</button>
+        <button class="opcion" data-respuesta="incorrecta1">"Claro, mis tarifas son de $$XX por día. ¿Te parece bien?"</button>
+        <button class="opcion" data-respuesta="incorrecta2">"Ok, ¿en qué fechas exactas me necesitas?"</button>
+    </div>
+
+    <div id="feedback-cliente" class="hidden">
+        <h3 id="feedback-titulo"></h3>
+        <p id="feedback-texto"></p>
+        
+        <div id="hook-curso" class="hidden">
+            <p><strong>Hacer las preguntas correctas desde el inicio demuestra tu profesionalismo y asegura el bienestar del gato.</strong> En nuestro curso completo, te damos un guion y un cuestionario con más de 30 preguntas esenciales para tu primera conversación con un cliente.</p>
+            <a href="#tu-enlace-al-curso" class="boton-curso">Ver el Temario del Curso</a>
+        </div>
+    </div>
+</section>
+
+
+<section id="lenguaje-felino">
+    <div class="titulo-modulo">
+    <h1>Reconociendo emociones felinas</h1>
+    <p>Selecciona una señal para aprender a identificar algunos mensajes corporales claves en la comunicación de un gato.</p>
+</div>
+    <div class="contenedor-principal-emociones">
+        <div class="columna-tarjetas">
+            <div id="cat-language-grid">
+                </div>
+        </div>
+        <div class="columna-grafico">
+            <h3>Barómetro Emocional Felino</h3>
+            <div class="chart-container">
+                <canvas id="catEmotionChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="explicacion-diagrama">
+    <div class="card-explicacion">
+        <h3>Explicación del Barómetro Emocional</h3>
+        <div class="texto-explicacion">
+            <p>Este diagrama, conocido como <strong>gráfico de radar</strong> o 'gráfico de araña', es una herramienta visual para entender el estado emocional de tu gato de un vistazo. Existen muchas más emociones que exploraremos en el curso, las que ves acá son solo algunas de ellas.</p>
+                        <p>Imagina que el centro es el "punto cero". Cada eje (Felicidad, Confianza, etc.) representa una emoción. Cuanto <strong>más lejos del centro</strong> está un punto, <strong>más intenso</strong> es ese sentimiento.</p>
+                        <p>La figura que se forma al unir los puntos te da una "fotografía" del estado de ánimo general. Una forma amplia y expandida es positiva, mientras que los picos en 'Miedo' o 'Irritación' son señales de alerta.</p>
+        </div>
+    </div>
+</section>
+
+<section id="checklist-diario">
+    <div class="titulo-modulo">
+        <h1>Checklist de bienestar diario</h1>
+        <p>Asegúrate de cubrir todas las necesidades básicas de los gatos a tu cargo cada día. ¡Marca las tareas completadas!</p>
+    </div>
+
+    <div class="progress-bar-container">
+        <div id="checklist-progress-bar" class="progress-bar-fill"></div>
+        <span id="checklist-progress-text">0% completado</span>
+    </div>
+
+    <div id="daily-checklist-container"></div>
+    
+    <div class="reset-container">
+        <button id="reset-checklist-btn">Reiniciar Checklist</button>
+    </div>
+
+    <div id="mensaje-75-porciento" class="hidden">
+        <p>🎉 ¡Vas por excelente camino! Has cubierto casi todos los puntos clave del cuidado diario.</p>
+    </div>
+
+    <div id="hook-checklist">
+        <p><strong>Este es un checklist esencial.</strong> En el curso "Maestría Cat Nanny", te proporcionamos checklists detallados para diferentes situaciones: estancias largas, gatos con necesidades especiales, gatitos y más.</p>
+    </div>
+</section>
+
+<section id="desafio-final">
+    <div class="titulo-modulo">
+        <h1>Desafío de decisión: ¿Qué harías tú?</h1>
+        <p>Una cosa es el conocimiento, otra es la acción bajo presión. Enfrenta este caso real y descubre tu mentalidad como profesional.</p>
+    </div>
+
+    <div id="escenario-milo">
+        <div class="escenario">
+            <div class="mensaje-cliente">
+                <p><strong>Situación:</strong> Llegas a la casa de un cliente nuevo para tu primer servicio. El dueño ya se fue de viaje. Al entrar, notas dos cosas preocupantes: 'Milo', un gato que actuó amigable en tu visita de reconocimiento, ahora está escondido debajo de un sofá y te bufa (hace 'hiss') si te acercas. Además, ves que su plato de comida de la mañana está completamente lleno.</p>
+            </div>
+            <p class="pregunta-clave">¿Cuál es tu <strong>primera acción prioritaria</strong>?</p>
+        </div>
+        <div class="opciones-respuesta">
+            <button class="opcion-final" data-feedback="feedback-fixer">Intentar sacar a Milo para tranquilizarlo.</button>
+            <button class="opcion-final" data-feedback="feedback-task">Ignorar a Milo y empezar con las tareas (arenero, agua).</button>
+            <button class="opcion-final" data-feedback="feedback-client">Escribirle inmediatamente al dueño para informarle.</button>
+            <button class="opcion-final" data-feedback="feedback-pro">Darle espacio, sentarme en el suelo a distancia y observar en silencio.</button>
+        </div>
+    </div>
+
+    <div id="feedback-inmediato-container" class="hidden">
+        <div id="feedback-fixer" class="feedback-box hidden">
+            <h3>Diagnóstico: Instinto de 'Salvador'</h3>
+            <p>Tu impulso de querer ayudar es admirable, ¡es la base de un gran cuidador! Sin embargo, forzar la interacción con un gato aterrorizado puede destruir la confianza permanentemente. Un profesional aprende técnicas de 'no intervención' para que sea el gato quien decida dar el primer paso.</p>
+        </div>
+        <div id="feedback-task" class="feedback-box hidden">
+            <h3>Diagnóstico: Enfoque en la Tarea</h3>
+            <p>Ser eficiente es importante, pero la prioridad #1 de un cuidador profesional es siempre la seguridad y el estado emocional del gato. Aprender a jerarquizar es un pilar del entrenamiento profesional.</p>
+        </div>
+        <div id="feedback-client" class="feedback-box hidden">
+             <h3>Diagnóstico: Enfoque en el Cliente</h3>
+            <p>Mantener al cliente informado es una gran cualidad, pero hacerlo sin tener toda la información puede generar pánico innecesario. Un profesional primero evalúa la situación con calma.</p>
+        </div>
+        <div id="feedback-pro" class="feedback-box hidden">
+            <h3>Diagnóstico: Mentalidad Profesional</h3>
+            <p>¡Exacto! Tu primera reacción no es 'actuar', sino 'evaluar'. Priorizas crear un ambiente seguro y reducir el estrés del animal. Esta paciencia es lo que diferencia a un aficionado de un profesional.</p>
+        </div>
+        <button id="calcular-potencial-btn" class="hidden">Calcular mi Potencial Profesional</button>
+    </div>
+
+    <div id="diagnostico-general" class="hidden">
+        <h3>Tu Diagnóstico General: Perfil de Cuidador con Alto Potencial</h3>
+        <div class="texto-diagnostico">
+            <p><strong>Sobre tu Talento:</strong> Las decisiones que tomas en situaciones como esta son la base de un servicio profesional por el que las personas pagan generosamente. No estás empezando de cero.</p>
+            <p><strong>Sobre tus Miedos:</strong> Es normal sentir incertidumbre. El miedo no se combate solo con amor, se combate con protocolos. Saber qué hacer exactamente transforma el miedo en confianza.</p>
+            <p><strong>Sobre tu Futuro:</strong> El cuidado de animales de compañía se está profesionalizando y ¡Ya era hora!. Pronto, los clientes exigirán cuidadores certificados y conocedores, contratar aficionados se ha convertido en un dolor de cabeza que además pone en riesgoel bienestar integral de los felinos de casa . Hoy tienes la oportunidad de adelantarte y ser un referente.</p>
+        </div>
+        <div class="reset-container">
+             <a href="#tu-enlace-final-al-curso" class="boton-curso">Ver Plan de Estudios a través del cual vas a profesionalizar tu amor por los gatos</a>
+        </div>
+    </div>
+</section>
+
+<section id="cierre-final">
+    <div class="final-cta-container">
+        <img src="images/gato-feliz.png" alt="Persona abrazando a un gato en un sillón al atardecer">
+</section>
+
+
+</main> <footer class="footer-marca">
+        <p>&copy; 2024 ONE EMPATHY</p>
+        <p class="subtexto">Herramientas parciales del curso de formación </strong>Maestría Cat Nanny</strong>, autoría de One Empathy Foundation.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

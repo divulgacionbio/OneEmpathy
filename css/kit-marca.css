@@ -1,0 +1,88 @@
+
+/* =================================
+   KIT DE MARCA - OneEmpathy
+   ================================= */
+
+/* -- 1. Paleta de Colores (Variables) -- */
+:root {
+  --color-primario: #2a62a3;   /* El azul principal para títulos y logos*/
+  --color-secundario: #4aa678; /* El verde-azulado para fondos o detalles */
+  --color-acento: #99c932;     /* El verde lima para botones y llamadas a la acción */
+  --color-texto: #333333;      /* Gris oscuro para texto, más suave que el negro */
+  --color-fondo: #fdfdfd;      /* Un blanco ligeramente cálido */
+  --color-bordes: #eeeeee;     /* Un gris muy claro para líneas y bordes sutiles */
+
+/* ---Variables de Tipografía --- */
+  --fuente-principal: 'Inter', sans-serif;
+  --fuente-titulos: 'Montserrat', sans-serif;
+  --tamano-texto-base: 1rem; /* equivale a 16px */
+  --tamano-texto-pequeno: 0.875rem; /* equivale a 14px */
+
+  /* ---Sistema de Espaciado --- */
+  --espacio-s: 0.5rem;  /* 8px   (Pequeño) */
+  --espacio-m: 1rem;   /* 16px  (Mediano) */
+  --espacio-l: 2rem;   /* 32px  (Grande) */
+  --espacio-xl: 5rem;  /* 80px  (Extra Grande) */
+
+/* ---Variable de texto sobre fondos oscuros --- */
+  --color-texto-invertido: rgba(255, 255, 255, 0.8); /* Blanco con 80% de opacidad */
+}
+
+/* -- 2. Estilos Base Globales -- */
+
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-principal); /* <-- Usando la variable */
+  font-size: var(--tamano-texto-base); /* <-- Usando la variable */
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos); /* <-- Usando la variable */
+  font-weight: 700;
+  color: var(--color-primario);
+  /* Borramos la línea de color duplicada que teníamos antes */
+}
+
+/* ... aquí arriba está tu :root y tus estilos de body ... */
+
+
+/* ======================================= */
+/* --- Clases de Nuestro Kit de Marca --- */
+/* ======================================= */
+
+.texto-primario {
+  color: var(--color-primario); /* Para textos con tu azul principal */
+}
+
+.texto-secundario {
+  color: var(--color-secundario); /* Para textos con tu verde-azulado */
+}
+
+.fondo-secundario {
+  background-color: var(--color-secundario); /* Para fondos */
+}
+
+.boton-acento {
+  background-color: var(--color-acento); /* Para botones importantes */
+}
+
+
+
+/* ======================================= */
+/* --- Estilos para el Footer --- */
+/* ======================================= */
+
+.footer-marca {
+  background-color: var(--color-primario); /* ¡Le devolvemos el color de fondo! */
+  color: var(--color-fondo);                /* Le devolvemos el color de texto (blanco) */
+  text-align: center;                      /* ¡Le devolvemos el centrado! */
+  margin-top: var(--espacio-xl);
+  padding: var(--espacio-l) 0;
+
+.footer-marca .subtexto {
+  font-size: var(--tamano-texto-pequeno); /* ¡También podemos usar nuestra variable de tamaño! */
+  color: var(--color-texto-invertido);    /* <-- Usando la variable */
+}
+

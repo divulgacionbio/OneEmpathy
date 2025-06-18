@@ -1,0 +1,218 @@
+/* ==========================================================================
+   ESTILO PARA LA PÁGINA TEASER
+   ========================================================================== */
+
+/* --- 1. Variables Globales y Estilos Base --- */
+:root {
+    --color-dark: #212121;
+    --color-light: #ffffff;
+    --color-gray-bg: #f8f9fa;
+    --color-gray-border: #e9ecef;
+    --color-accent-action: #ff6f61; /* Coral para acciones principales */
+    --color-accent-highlight: #c5a47e; /* Dorado/Bronce para detalles de prestigio */
+    --font-main: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* ¡NUEVA FUENTE! */
+    /* ... otros estilos ... */
+}
+
+main {
+    max-width: 850px;
+    margin: 2rem auto;
+    background-color: var(--color-light);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 1rem;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+header h1 {
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+header p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0.5rem auto 0;
+    opacity: 0.9;
+}
+
+section {
+    margin-top: 5rem;
+    padding-top: 5rem;
+    border-top: 1px solid var(--color-gray-border);
+
+}
+section:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.hidden { display: none !important; }
+.titulo-modulo { text-align: center; margin-bottom: 2.5rem; }
+/* Y déjala así */
+.titulo-modulo h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #A68A64; /* ¡NUEVO COLOR DORADO/BRONCE! */
+}.titulo-modulo p { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0.5rem auto 0; }
+
+/* Módulo 1 */
+/* --- Módulo 1: Desafío de Seguridad (Hotspots Restaurados) --- */
+#juego-seguridad {
+    position: relative;
+    max-width: 700px;
+    margin: 20px auto;
+}
+#juego-seguridad img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+.hotspot {
+    position: absolute;
+    width: 12%;
+    height: 0;
+    padding-bottom: 12%; /* Mantiene la forma de círculo */
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.2); /* ¡NUEVO! Relleno gris semi-transparente */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 2px solid rgba(100, 100, 100, 0.8); /* ¡NUEVO! Borde gris */
+    box-sizing: border-box;
+}
+
+.hotspot:hover {
+    background-color: #c5a47e; /* al pasar el ratón */
+}
+
+.hotspot.found {
+    background-color: rgba(76, 175, 80, 0.7); /* Relleno verde al encontrar */
+    border-color: #2e7d32;
+    pointer-events: none;
+}
+        
+/* --- Coordenadas de los Hotspots --- */
+
+/* Peligro 1: Tableta de Chocolate */
+.hotspot[data-item="1"] { top: 76%; left: 14%; }
+
+/* Peligro 2: Pastillas/medicamentos */
+.hotspot[data-item="2"] { top: 74%; left: 30%; }
+
+/* Peligro 3: Planta en la estantería */
+.hotspot[data-item="3"] { top: 23%; left: 82%; }
+
+/* Peligro 4: Ovillo de lana */
+.hotspot[data-item="4"] { top: 81%; left: 78%; }
+
+/* Peligro 5: Cables eléctricos */
+.hotspot[data-item="5"] { top: 75%; left: 50%; }
+
+#feedback-seguridad {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Módulo 2 y 5 */
+.escenario { background-color: #f9f9f9; border: 1px solid #e7e7e7; border-radius: 8px; padding: 20px; margin: 20px 0; }
+.mensaje-cliente { border-left: 4px solid #5a3e8d; padding-left: 15px; font-style: italic; }
+.pregunta-clave { margin-top: 25px; font-size: 1.2em; font-weight: bold; }
+.opciones-respuesta { display: grid; gap: 12px; margin-top: 25px; }
+.opcion, .opcion-final { padding: 15px; font-size: 1em; cursor: pointer; border: 2px solid #ccc; background-color: #fff; border-radius: 8px; text-align: left; transition: all 0.2s ease; }
+.opcion:hover, .opcion-final:hover { border-color: #5a3e8d; }
+.opcion:disabled { background-color: #f1f1f1; color: #aaa; cursor: not-allowed; }
+.feedback-box, #feedback-cliente { margin-top: 1.5rem; padding: 1.5rem; border-radius: 8px; border-left: 5px solid; text-align: left; background-color: #e3f2fd; border-color: #90caf9; }
+.feedback-box h3, #feedback-cliente h3 { margin-top: 0; }
+.boton-curso, #calcular-potencial-btn { display: inline-block; background-color: #ff6f61; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 15px; border: none; cursor: pointer; }
+
+/* Módulo 3 */
+.contenedor-principal-emociones { display: flex; flex-direction: column; gap: 2rem; align-items: center;}
+#cat-language-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 450px;       /* Mantenemos el ancho máximo */
+    margin: 0 auto;           /* Mantenemos el centrado */
+    box-sizing: border-box; /* ¡LA SOLUCIÓN! Evita que los elementos se desborden */
+}
+.columna-grafico h3 { font-weight: 600; text-align: center; }
+.chart-container { position: relative; height: 300px; width: 100%; max-width: 400px; }
+.cat-lang-card {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    border: 2px solid #eee;
+    transition: all 0.2s ease;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 180px; /* ¡NUEVO! Altura fija para control total */
+
+}
+.cat-lang-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+.cat-lang-card.selected { border-color: #5a3e8d; transform: scale(1.05) translateY(-5px); }
+.cat-lang-card img { width: 50px; height: 50px; }
+.cat-lang-card h4 { font-weight: 600; margin-top: 0.5rem; }
+#explicacion-diagrama { margin-top: 2rem; }
+.card-explicacion { background-color: #f9f9f9; border: 1px solid #e7e7e7; padding: 1.5rem; border-radius: 4px; }
+
+/* Módulo 4 */
+.progress-bar-container { width: 100%; background-color: #e9ecef; border-radius: 0.5rem; margin: 2rem auto; height: 30px; position: relative; }
+.progress-bar-fill { height: 100%; width: 0%; background-color: #4CAF50; transition: width 0.4s ease-in-out; border-radius: 0.5rem;}
+#checklist-progress-text { position: absolute; width: 100%; text-align: center; line-height: 30px; font-weight: bold; color: #333; text-shadow: 1px 1px 2px white; }
+#daily-checklist-container { border: 1px solid #e0e0e0; border-radius: 4px; }
+.task-item { display: flex; padding: 0.75rem; border-bottom: 1px solid #f0f0f0; }
+.task-item:last-child { border-bottom: none; }
+.task-item input[type="checkbox"] { display: none; }
+.task-item label { cursor: pointer; padding-left: 35px; position: relative; }
+.task-item label::before { content: ''; position: absolute; left: 0; top: 2px; width: 20px; height: 20px; border: 2px solid #5a3e8d; border-radius: 4px; }
+.task-item label::after { content: '✔'; position: absolute; left: 4px; top: 3px; transform: scale(0); font-size: 18px; color: #5a3e8d; transition: transform 0.1s ease; }
+.task-item input[type="checkbox"]:checked + label::after { transform: scale(1); }
+.task-text { font-weight: 600; display: block; }
+.task-details { font-size: 0.9em; color: #666; display: block; }
+.task-item input[type="checkbox"]:checked + label .task-text, .task-item input[type="checkbox"]:checked + label .task-details { text-decoration: line-through; color: #aaa; }
+.reset-container { text-align: center; margin-top: 1.5rem; }
+#reset-checklist-btn { background-color: #A68A64; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+#mensaje-75-porciento { background-color: #e3f2fd; border: 1px solid #90caf9; color: #1e88e5; /* ... */ }
+
+/* Footer y Responsive */
+.footer-marca {
+    background-color: #A68A64; /* ¡NUEVO COLOR BRONCE! */
+    color: white;
+    margin-top: 4rem;
+    padding: 2rem 0; /* Ajuste para padding vertical */
+    text-align: center;
+}
+@media (min-width: 1024px) {
+    #lenguaje-felino .contenedor-principal-emociones { flex-direction: row; }
+    #lenguaje-felino .columna-tarjetas, #lenguaje-felino .columna-grafico { width: 50%; }
+}
+
+.imagen-final {
+    display: block;
+    width: 100%;
+    max-width: 700px; /* Esta es la línea que cambiaremos */
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    .cta-text {
+        max-width: 80%;
+        top: 1rem;
+        left: 1rem;
+    }
+}
+
+

@@ -216,3 +216,45 @@ section:first-child { margin-top: 0; padding-top: 0; border-top: none; }
 }
 
 
+/* --- ESTILOS PARA EL BOTÓN DE WHATSAPP (CON VOLUMEN) --- */
+.whatsapp-container {
+    text-align: center;
+    margin-bottom: 2.5rem; /* Un poco más de espacio */
+}
+
+.boton-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white; /* Texto blanco */
+    background-color: #A68A64; /* Nuestro color bronce */
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    
+    /* El efecto de "volumen" */
+    box-shadow: 0 4px 0px #8c7354; /* Sombra sólida inferior (un bronce más oscuro) */
+}
+
+.boton-whatsapp:hover {
+    transform: translateY(-2px); /* Al pasar el mouse, el botón "salta" un poco */
+    box-shadow: 0 6px 0px #8c7354;
+}
+
+.boton-whatsapp:active {
+    /* Al hacer clic, el botón se "hunde" */
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px #8c7354;
+}
+
+/* El icono no necesita cambios */
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}

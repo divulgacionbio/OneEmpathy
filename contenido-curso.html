@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido del Curso - Maestría Cat Nanny</title>
+    <!-- Tailwind CSS (for layout and accordion structure) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (New Font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- New Custom Styles -->
+    <style>
+        /* ==========================================================================
+           ESTILO PARA LA PÁGINA TEASER
+           ========================================================================== */
+
+        /* --- 1. Variables Globales y Estilos Base --- */
+        :root {
+            --color-dark: #212121;
+            --color-light: #ffffff;
+            --color-gray-bg: #f8f9fa;
+            --color-gray-border: #e9ecef;
+            --color-accent-action: #ff6f61; /* Coral para acciones principales */
+            --color-accent-highlight: #c5a47e; /* Dorado/Bronce para detalles de prestigio */
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* ¡NUEVA FUENTE! */
+            background-color: #1a1a1a;
+            color: var(--color-dark);
+        }
+
+        main {
+            max-width: 850px;
+            margin: 2rem auto;
+            background-color: var(--color-light);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: var(--color-dark);
+            color: var(--color-light);
+        }
+        header h1 {
+            font-weight: 800;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+            opacity: 0.9;
+        }
+
+        .titulo-modulo { text-align: center; margin-bottom: 2.5rem; }
+        .titulo-modulo h2 { /* Applying style to the main H2 title */
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #A68A64; /* ¡NUEVO COLOR DORADO/BRONCE! */
+        }
+        .titulo-modulo p { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0.5rem auto 0; }
+
+        /* --- Styles for Accordion (Adapted from new stylesheet) --- */
+        .accordion-header h3 {
+             font-family: 'Poppins', sans-serif;
+             font-weight: 600;
+             color: #A68A64; /* Dorado/Bronce para títulos de módulo */
+        }
+        
+        .lesson-number {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+        }
+
+        .masterclass-item {
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+        
+        .masterclass-icon {
+             background-color: var(--color-accent-highlight);
+             color: var(--color-dark);
+        }
+
+        /* --- Accordion Functionality --- */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        /* --- Footer --- */
+        .footer-marca {
+            background-color: #A68A64; /* ¡NUEVO COLOR BRONCE! */
+            color: white;
+            margin-top: 4rem;
+            padding: 2rem 0; /* Ajuste para padding vertical */
+            text-align: center;
+        }
+
+        /* NOTE: Other styles from your CSS are included but may not apply to this specific page structure. */
+        /* They are available if you add the corresponding HTML elements later. */
+    </style>
+</head>
+<body class="text-gray-800">
+
+
+    <!-- Main Content -->
+    <main>
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Page Title -->
+            <div class="titulo-modulo mb-8 md:mb-12">
+                <h2 class="text-4xl md:text-6xl drop-shadow-sm">Temario de formación<br>MAESTRÍA CAT NANNY</h2>
+                <p class="mt-2 text-lg">Explora todos los módulos y lecciones que te convertirán en profesional.</p>
+            </div>
+
+            <!-- Curriculum Accordion -->
+            <div id="accordion-container" class="space-y-4">
+
+                <!-- Módulo 0 -->
+                <div class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <button class="accordion-header w-full text-left p-4 md:p-5 focus:outline-none transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg md:text-xl">Módulo 0: El punto de partida: tu misión comienza</h3>
+                            <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="p-4 md:p-5 border-t border-gray-200 bg-gray-50 list-none space-y-3">
+                            <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">0.1</span>Lección 0.1: Bienvenida y expectativas del viaje.</li>
+                            <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">0.2</span>Lección 0.2: Presentación del "Código de Ética".</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 1 -->
+                <div class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <button class="accordion-header w-full text-left p-4 md:p-5 focus:outline-none transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg md:text-xl">Módulo 1: El código de ética del cuidado felino de élite</h3>
+                             <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="p-4 md:p-5 border-t border-gray-200 bg-gray-50 list-none space-y-3">
+                            <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1.1</span>Lección 1.1: Tu deber profesional y la frontera veterinaria.</li>
+                            <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1.2</span>Lección 1.2: Los 5 dominios del bienestar animal aplicados al cuidado felino.</li>
+                            <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1.3</span>Lección 1.3: Conociendo a tu cliente felino y su individualidad.</li>
+                            <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1.4</span>Lección 1.4: Lenguaje corporal esencial: las señales que te hablan.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Módulo 2 -->
+                <div class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <button class="accordion-header w-full text-left p-4 md:p-5 focus:outline-none transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg md:text-xl">Módulo 2: ¡Tu primera gran victoria! Modelo de negocio y tarifas rentables</h3>
+                             <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="p-4 md:p-5 border-t border-gray-200 bg-gray-50 list-none space-y-3">
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2.1</span>Lección 2.1: Definiendo tu menú de servicios premium.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2.2</span>Lección 2.2: La psicología de los precios: cómo fijar una tarifa que te valore.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2.3</span>Lección 2.3: La calculadora de tarifas rentables.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2.4</span>Lección 2.4: Plantilla de tu "Kit de Bienvenida" para nuevos clientes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <button class="accordion-header w-full text-left p-4 md:p-5 focus:outline-none transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg md:text-xl">Módulo 3: Protocolos 5 estrellas: salud, nutrición y entorno</h3>
+                             <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="p-4 md:p-5 border-t border-gray-200 bg-gray-50 list-none space-y-3">
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3.1</span>Lección 3.1: El impacto de la alimentación en la salud física y emocional.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3.2</span>Lección 3.2: Protocolo de higiene y enriquecimiento ambiental.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3.3</span>Lección 3.3: Primeros auxilios básicos: qué hacer mientras contactas al veterinario.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3.4</span>Lección 3.4: El arte del juego: estimulación para una mente sana.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 4 -->
+                 <div class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <button class="accordion-header w-full text-left p-4 md:p-5 focus:outline-none transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg md:text-xl">Módulo 4: El sistema para conseguir clientes y crear confianza</h3>
+                             <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="p-4 md:p-5 border-t border-gray-200 bg-gray-50 list-none space-y-3">
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4.1</span>Lección 4.1: Creando tu perfil irresistible.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4.2</span>Lección 4.2: Creando lazos de confianza desde el minuto cero.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4.3</span>Lección 4.3: Marketing de "círculo cercano" para tus primeros clientes.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4.4</span>Lección 4.4: El sello de la ONG como generador de confianza instantánea.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 5 -->
+                 <div class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <button class="accordion-header w-full text-left p-4 md:p-5 focus:outline-none transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg md:text-xl">Módulo 5: El arsenal avanzado (manejo de dinámicas y casos complejos)</h3>
+                             <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="p-4 md:p-5 border-t border-gray-200 bg-gray-50 list-none space-y-3">
+                           <li class="masterclass-item flex items-start"><span class="masterclass-icon rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">🎓</span>[Clase Magistral] Protocolo para hogares con múltiples gatos.</li>
+                           <li class="masterclass-item flex items-start"><span class="masterclass-icon rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">🎓</span>[Clase Magistral] Introducción a gatos con necesidades especiales.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">5.3</span>Lección 5.3: Protocolos de acción para situaciones específicas y delicadas.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">5.4</span>Lección 5.4: Educando a la familia: cómo convertirte en su asesor de confianza.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 6 -->
+                 <div class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <button class="accordion-header w-full text-left p-4 md:p-5 focus:outline-none transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg md:text-xl">Módulo 6: Cuidados especializados (clases magistrales)</h3>
+                             <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="p-4 md:p-5 border-t border-gray-200 bg-gray-50 list-none space-y-3">
+                           <li class="masterclass-item flex items-start"><span class="masterclass-icon rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">🎓</span>[Clase Magistral] Cuidado de gatos geriátricos y pacientes crónicos.</li>
+                           <li class="masterclass-item flex items-start"><span class="masterclass-icon rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">🎓</span>[Clase Magistral] Cuidados post-operatorios básicos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 7 -->
+                 <div class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <button class="accordion-header w-full text-left p-4 md:p-5 focus:outline-none transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg md:text-xl">Módulo 7: El sello final: profesionalismo, contratos y crecimiento</h3>
+                             <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="p-4 md:p-5 border-t border-gray-200 bg-gray-50 list-none space-y-3">
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">7.1</span>Lección 7.1: La plantilla de contrato "Tranquilidad Total".</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">7.2</span>Lección 7.2: Comunicación profesional y reportes que enamoran al cliente.</li>
+                           <li class="flex items-start"><span class="lesson-number rounded-full text-xs w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">7.3</span>Lección 7.3: Recomendaciones de seguros y crecimiento de tu negocio.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer-marca">
+        <div class="max-w-6xl mx-auto px-4 py-6 text-center">
+            <p>&copy; 2024 One Empathy. Todos los derechos reservados.</p>
+            <p class="text-sm opacity-80 mt-1">Formación basada en ciencia y evidencia.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                const icon = header.querySelector('svg');
+
+                header.addEventListener('click', () => {
+                    // This implementation allows only one item to be open at a time.
+                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+                    
+                    // Close all items before opening the new one
+                    accordionItems.forEach(otherItem => {
+                        otherItem.querySelector('.accordion-content').style.maxHeight = '0px';
+                        otherItem.querySelector('.accordion-header svg').style.transform = 'rotate(0deg)';
+                    });
+
+                    // If the clicked item was not already open, open it.
+                    if (!isOpen) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Ley Kiara y el Futuro del Cuidado Animal en Colombia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: #00A7A7;
+            color: #FFFFEA;
+        }
+        .flow-node {
+            background-color: #FFFFEA;
+            border: 2px solid #00A7A7;
+        }
+        .flow-arrow {
+            color: #00A7A7;
+            font-weight: bold;
+        }
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-[#4A4A4A]">
+
+    <header class="bg-white shadow-md p-6 text-center">
+        <h1 class="text-3xl md:text-5xl font-black text-[#00A7A7]">Ley Kiara: Una Nueva Era para el Bienestar Animal en Colombia</h1>
+        <p class="mt-2 text-lg">Un análisis visual de la ley que transforma el cuidado de mascotas en el país.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="mercado" class="text-center bg-white rounded-lg shadow-md p-8 mb-8">
+            <h2 class="text-3xl font-bold mb-4">Un Mercado en Pleno Auge</h2>
+            <p class="max-w-3xl mx-auto mb-6">La relación de los colombianos con sus mascotas ha impulsado un crecimiento económico sin precedentes. La Ley Kiara llega para formalizar y proteger un sector de inmenso valor y potencial.</p>
+            <div class="kpi-card rounded-lg p-6 max-w-lg mx-auto">
+                <p class="text-2xl font-bold">Proyección de Gasto para 2026</p>
+                <p class="text-6xl font-black tracking-tighter">$6.1 Billones</p>
+                <p class="text-sm mt-2">Fuente: Euromonitor International</p>
+            </div>
+        </section>
+
+        <section id="tenencia" class="mb-8">
+             <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">El Motor del Cambio: Una Nación de Amantes de las Mascotas</h2>
+                <p class="max-w-3xl mx-auto mt-2">La "humanización" de los animales de compañía es una realidad. Son miembros de la familia, y su bienestar es una prioridad para millones de hogares.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Hogares con Mascotas en Colombia</h3>
+                    <p class="text-sm text-center mb-4">La gran mayoría de los hogares colombianos comparte su vida con al menos un animal de compañía, una cifra que ha crecido 8 puntos en los últimos 3 años.</p>
+                    <div class="chart-container">
+                        <canvas id="ownershipChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Ranking de Tenencia por Ciudades</h3>
+                     <p class="text-sm text-center mb-4">Las grandes ciudades lideran la tendencia de tenencia de mascotas, creando una alta demanda de servicios de cuidado en los principales centros urbanos.</p>
+                    <div class="chart-container">
+                        <canvas id="citiesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="problematica" class="mb-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">La Realidad Actual: Un Sector Fragmentado y de Alto Riesgo</h2>
+                <p class="max-w-3xl mx-auto mt-2">La informalidad y la falta de estándares han generado casos de negligencia y maltrato, erosionando la confianza de los propietarios y poniendo en peligro a los animales.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Casos de Maltrato Animal Reportados (2023)</h3>
+                    <p class="text-sm text-center mb-4">Las cifras de la Fiscalía muestran una alarmante realidad. Bogotá no solo lidera los casos, sino que vio un aumento del 87% en 2024.</p>
+                    <div class="chart-container">
+                        <canvas id="abuseCasesChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Tipos de Maltrato más Frecuentes</h3>
+                    <p class="text-sm text-center mb-4">La violencia física y la retención son las formas más comunes de agresión, pero la negligencia por desconocimiento es un problema silencioso y extendido.</p>
+                    <div class="chart-container">
+                        <canvas id="abuseTypesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+             <div class="mt-8 bg-[#FF5E5B] text-white rounded-lg shadow-md p-6 text-center">
+                <p class="text-5xl font-black">11,000+</p>
+                <p class="text-2xl font-bold">Animales abandonados cada año solo en Bogotá</p>
+            </div>
+        </section>
+        
+        <section id="solucion" class="bg-white rounded-lg shadow-md p-8 mb-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">La Solución: Pilares Fundamentales de la Ley Kiara</h2>
+                <p class="max-w-3xl mx-auto mt-2">La ley establece un nuevo estándar de operación, exigiendo formalidad, transparencia y un compromiso verificable con el bienestar animal en toda la cadena de servicios.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <div class="flow-node text-center p-4 rounded-lg shadow-sm">
+                    <div class="text-4xl">📝</div>
+                    <h4 class="font-bold mt-2">Registro Formal</h4>
+                    <p class="text-xs">Cámara de Comercio y plataforma de Minambiente.</p>
+                </div>
+                <div class="text-2xl flow-arrow transform rotate-90 md:rotate-0">→</div>
+                <div class="flow-node text-center p-4 rounded-lg shadow-sm">
+                    <div class="text-4xl">🏞️</div>
+                    <h4 class="font-bold mt-2">Infraestructura Adecuada</h4>
+                    <p class="text-xs">Espacios seguros, higiénicos y enriquecidos.</p>
+                </div>
+                <div class="text-2xl flow-arrow transform rotate-90 md:rotate-0">→</div>
+                <div class="flow-node text-center p-4 rounded-lg shadow-sm">
+                     <div class="text-4xl">🎓</div>
+                    <h4 class="font-bold mt-2">Personal Certificado</h4>
+                    <p class="text-xs">Capacitación y sin antecedentes de maltrato.</p>
+                </div>
+                <div class="text-2xl flow-arrow transform rotate-90 md:rotate-0">→</div>
+                 <div class="flow-node text-center p-4 rounded-lg shadow-sm">
+                    <div class="text-4xl">📹</div>
+                    <h4 class="font-bold mt-2">Videovigilancia</h4>
+                    <p class="text-xs">Supervisión permanente y transparencia total.</p>
+                </div>
+                <div class="text-2xl flow-arrow transform rotate-90 md:rotate-0">→</div>
+                <div class="flow-node text-center p-4 rounded-lg shadow-sm">
+                    <div class="text-4xl">⛑️</div>
+                    <h4 class="font-bold mt-2">Protocolos de Emergencia</h4>
+                    <p class="text-xs">Atención veterinaria y plan de búsqueda.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="responsabilidad-compartida" class="bg-white rounded-lg shadow-md p-8 mb-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">Una Responsabilidad Compartida</h2>
+                <p class="max-w-3xl mx-auto mt-2">El éxito de la ley no depende solo de los prestadores. Los propietarios tienen un rol activo y fundamental para garantizar el bienestar de sus mascotas.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <span class="text-3xl">🧐</span>
+                    <p class="font-bold mt-2">Visitar las Instalaciones</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <span class="text-3xl">💉</span>
+                    <p class="font-bold mt-2">Entregar Certificado de Salud</p>
+                </div>
+                 <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <span class="text-3xl">💊</span>
+                    <p class="font-bold mt-2">Proveer Alimentos y Medicinas</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <span class="text-3xl">⏰</span>
+                    <p class="font-bold mt-2">Cumplir Horarios de Recogida</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="oportunidades" class="mb-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">Nuevos Horizontes: Oportunidades de Negocio</h2>
+                <p class="max-w-3xl mx-auto mt-2">La formalización y la demanda por calidad abren un abanico de oportunidades para emprendedores e inversores en el ecosistema del cuidado animal.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="opportunity-card bg-white rounded-lg shadow-md p-6 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4">🏨</div>
+                    <h4 class="text-lg font-bold">Servicios Premium</h4>
+                    <p class="text-sm">Guarderías y hoteles de alta calidad con certificaciones y tecnología de monitoreo.</p>
+                </div>
+                <div class="opportunity-card bg-white rounded-lg shadow-md p-6 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4">📱</div>
+                    <h4 class="text-lg font-bold">Soluciones Tecnológicas</h4>
+                    <p class="text-sm">Apps de monitoreo, plataformas de gestión y sistemas de registro para prestadores y usuarios.</p>
+                </div>
+                <div class="opportunity-card bg-white rounded-lg shadow-md p-6 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4">🛡️</div>
+                    <h4 class="text-lg font-bold">Seguros Especializados</h4>
+                    <p class="text-sm">Pólizas de responsabilidad civil y seguros de salud adaptados a las nuevas exigencias.</p>
+                </div>
+                <div class="opportunity-card bg-white rounded-lg shadow-md p-6 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4">🧑‍🏫</div>
+                    <h4 class="text-lg font-bold">Capacitación y Certificación</h4>
+                    <p class="text-sm">Programas de formación en bienestar animal, primeros auxilios y manejo para el personal.</p>
+                </div>
+                <div class="opportunity-card bg-white rounded-lg shadow-md p-6 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4">📋</div>
+                    <h4 class="text-lg font-bold">Consultoría en Cumplimiento</h4>
+                    <p class="text-sm">Asesoría a empresas para adaptarse a la nueva normativa, infraestructura y protocolos.</p>
+                </div>
+                <div class="opportunity-card bg-white rounded-lg shadow-md p-6 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4">🐾</div>
+                    <h4 class="text-lg font-bold">Sistemas de Identificación</h4>
+                    <p class="text-sm">Implementación de microchips y bases de datos para la trazabilidad y recuperación de mascotas.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 bg-gray-800 text-white mt-8">
+        <p>Infografía generada a partir del análisis de la Ley Kiara (2024). Un compromiso colectivo por el bienestar animal.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const energeticPlayful = {
+                red: '#FF5E5B',
+                lightYellow: '#FFFFEA',
+                gray: '#D8D8D8',
+                darkGray: '#4A4A4A',
+                teal: '#00A7A7',
+                tealTransparent: 'rgba(0, 167, 167, 0.7)',
+                redTransparent: 'rgba(255, 94, 91, 0.7)'
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+
+            const commonTooltipOptions = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                        backgroundColor: energeticPlayful.darkGray,
+                        titleFont: { size: 14, weight: 'bold' },
+                        bodyFont: { size: 12 },
+                        padding: 10,
+                        cornerRadius: 5
+                    }
+                }
+            };
+            
+            function wrapLabel(label, maxLength = 16) {
+                if (label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).length > maxLength) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine += (currentLine ? ' ' : '') + word;
+                    }
+                });
+                lines.push(currentLine);
+                return lines;
+            }
+
+            const ownershipCtx = document.getElementById('ownershipChart').getContext('2d');
+            new Chart(ownershipCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Hogares con mascota', 'Hogares sin mascota'],
+                    datasets: [{
+                        label: '% de Hogares',
+                        data: [67, 33],
+                        backgroundColor: [energeticPlayful.teal, energeticPlayful.gray],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        ...commonTooltipOptions.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: energeticPlayful.darkGray,
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const citiesCtx = document.getElementById('citiesChart').getContext('2d');
+            new Chart(citiesCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Bogotá', 'Cali', 'Medellín'],
+                    datasets: [{
+                        label: '% de Hogares con Mascota',
+                        data: [25, 18, 17],
+                        backgroundColor: [
+                            energeticPlayful.tealTransparent,
+                            energeticPlayful.redTransparent,
+                            'rgba(216, 216, 216, 0.7)'
+                        ],
+                        borderColor: [
+                            energeticPlayful.teal,
+                            energeticPlayful.red,
+                            energeticPlayful.gray
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                     scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { display: false },
+                            ticks: {
+                                callback: function(value) { return value + '%' },
+                                color: energeticPlayful.darkGray
+                            }
+                        },
+                        y: {
+                           grid: { display: false },
+                           ticks: { color: energeticPlayful.darkGray, font: {size: 14} }
+                        }
+                    },
+                    plugins: {
+                        ...commonTooltipOptions.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+            
+            const abuseCasesCtx = document.getElementById('abuseCasesChart').getContext('2d');
+            const abuseLabels = ['Bogotá', 'Pasto', 'Cali', 'Santa Marta', 'Ibagué', 'Villavicencio'];
+            const wrappedAbuseLabels = abuseLabels.map(label => wrapLabel(label));
+
+            new Chart(abuseCasesCtx, {
+                type: 'bar',
+                data: {
+                    labels: wrappedAbuseLabels,
+                    datasets: [{
+                        label: 'Casos Reportados',
+                        data: [136, 30, 28, 28, 24, 24],
+                        backgroundColor: energeticPlayful.redTransparent,
+                        borderColor: energeticPlayful.red,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { color: energeticPlayful.darkGray }
+                        },
+                        x: {
+                            ticks: { color: energeticPlayful.darkGray }
+                        }
+                    },
+                    plugins: {
+                        ...commonTooltipOptions.plugins,
+                        legend: { display: false },
+                    }
+                }
+            });
+
+            const abuseTypesCtx = document.getElementById('abuseTypesChart').getContext('2d');
+            new Chart(abuseTypesCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Violencia Física', 'Retención', 'Negligencia', 'Otros'],
+                    datasets: [{
+                        label: 'Tipo de Maltrato',
+                        data: [45, 20, 8, 27],
+                        backgroundColor: [
+                            energeticPlayful.red,
+                            energeticPlayful.teal,
+                            energeticPlayful.darkGray,
+                            energeticPlayful.gray
+                        ],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...commonTooltipOptions.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: energeticPlayful.darkGray,
+                                font: { size: 14 }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

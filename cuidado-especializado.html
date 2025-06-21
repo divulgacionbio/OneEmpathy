@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: El mercado de cuidaado de animales de compañía en Colombia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-arrow {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flow-arrow::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background-color: #7a5195;
+        }
+        .flow-arrow::after {
+            content: '▼';
+            position: absolute;
+            bottom: -10px;
+            font-size: 20px;
+            color: #7a5195;
+        }
+        .opportunity-line {
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .opportunity-line {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: -2rem;
+                right: -2rem;
+                height: 2px;
+                background-color: #bc5090;
+                z-index: 0;
+            }
+            .opportunity-card {
+                position: relative;
+                z-index: 10;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    
+    <div id="infographic-content">
+
+        <header class="bg-white text-center p-8 shadow-lg">
+            <h1 class="text-4xl md:text-6xl font-black text-[#003f5c] tracking-tight">El boom del cuidado de animales de compañía en Colombia</h1>
+            <p class="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">Una oportunidad de mercado dorada, impulsada por nuevas demografías y una creciente necesidad de confianza.</p>
+        </header>
+
+        <main class="container mx-auto p-4 md:p-8">
+
+            
+            <section id="global-context" class="mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#003f5c]">1. Contexto global: Una industria en plena expansión</h2>
+                    <p class="text-slate-600 mt-2 max-w-2xl mx-auto">El mercado mundial de cuidado de caninos y felinos es un gigante económico que valida la oportunidad. Su crecimiento sostenido a dos dígitos demuestra una demanda robusta y duradera.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+                    <div class="bg-white p-6 rounded-lg shadow-md lg:col-span-2">
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#374c80]">Proyección del mercado global de cuidado de animales de compañía (USD)</h3>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="globalMarketChart"></canvas>
+                        </div>
+                         <p class="text-sm text-slate-500 mt-4 text-center">Este crecimiento explosivo, con una tasa anual compuesta (CAGR) del 11.8%, está impulsado por custodios que consideran a sus animales como miembros de la familia, invirtiendo cada vez más en su bienestar.</p>
+                    </div>
+                    <div class="flex flex-col gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                            <h3 class="text-xl font-bold text-[#374c80]">Dominio canino</h3>
+                             <div class="chart-container h-48">
+                                <canvas id="petTypeShareChart"></canvas>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-2">Los perros representan el 82.9% del mercado, pero el segmento de gatos es el de más rápido crecimiento.</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                            <h3 class="text-xl font-bold text-[#374c80]">Servicio en auge</h3>
+                            <div class="text-5xl font-black text-[#ffa600] my-4">🏠</div>
+                            <p class="text-lg font-bold">Visitas a domicilio</p>
+                            <p class="text-sm text-slate-500 mt-2">El segmento de servicio con el crecimiento más rápido, priorizando la comodidad del animal en su propio hogar.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section id="colombian-market" class="mb-16">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#003f5c]">2. La "Pet-conomía" colombiana: Un terreno fértil</h2>
+                    <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Colombia no solo sigue las tendencias globales, las amplifica. La alta penetración cultural y un gasto creciente crean un escenario de oportunidad único.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center flex flex-col justify-center">
+                        <div class="text-6xl font-black text-[#bc5090]">67%</div>
+                        <h3 class="text-xl font-bold mt-2 text-[#7a5195]">de los hogares en Colombia tiene al menos un animal como parte de la familia.</h3>
+                        <p class="text-sm text-slate-500 mt-2">Esta cifra supera el promedio mundial (56%), demostrando una base de mercado excepcionalmente grande y receptiva.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center flex flex-col justify-center">
+                        <div class="text-4xl md:text-5xl font-black text-[#bc5090]">$6.1 Billones</div>
+                        <p class="text-lg font-bold text-slate-600">(Pesos COP)</p>
+                        <h3 class="text-xl font-bold mt-2 text-[#7a5195]">Gasto proyectado para 2026.</h3>
+                        <p class="text-sm text-slate-500 mt-2">El mercado está madurando rápidamente, con personas invirtiendo en alimentos premium, salud y servicios de calidad.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#374c80]">Perfil del tutor moderno</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-4 text-[#ffa600]">👤</span>
+                                <div>
+                                    <h4 class="font-bold">Hogares unipersonales en aumento</h4>
+                                    <p class="text-sm text-slate-500">Casi el 20% de los hogares son de una sola persona, aumentando la dependencia de servicios de cuidado externos.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-2xl mr-4 text-[#ffa600]">🏙️</span>
+                                <div>
+                                    <h4 class="font-bold">Vida Urbana en Apartamentos</h4>
+                                    <p class="text-sm text-slate-500">El 70% de los custodios en Bogotá vive en apartamentos, necesitando paseos y cuidados diurnos.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-4 text-[#ffa600]">✈️</span>
+                                <div>
+                                    <h4 class="font-bold">Renovado Apetito por Viajar</h4>
+                                    <p class="text-sm text-slate-500">El auge de los viajes nacionales e internacionales es el catalizador de demanda más directo y potente.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <section id="competitive-gap" class="mb-16 bg-white p-8 rounded-lg shadow-md">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#003f5c]">3. El déficit de confianza: La brecha en el mercado actual</h2>
+                    <p class="text-slate-600 mt-2 max-w-3xl mx-auto">Los custodios de animales en Colombia se enfrentan a una elección polarizada. Ninguna opción actual resuelve de manera integral la necesidad de conveniencia, calidad y, sobre todo, tranquilidad.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row justify-around items-center gap-8">
+                    
+                    <div class="text-center w-full md:w-1/3 p-4 border-2 border-dashed border-red-300 rounded-lg bg-red-50">
+                        <div class="text-4xl mb-2">🏨</div>
+                        <h4 class="text-lg font-bold text-red-800">Hoteles y guarderías tradicionales</h4>
+                        <p class="font-semibold text-green-700 mt-2">Fortaleza: Seguridad percibida.</p>
+                        <p class="font-semibold text-red-700 mt-1">Debilidad: Estrés para el animal, logística compleja, ambiente no personalizado.</p>
+                    </div>
+
+                    
+                    <div class="text-center w-full md:w-1/3 p-6 bg-[#7a5195] text-white rounded-full shadow-2xl flex flex-col justify-center aspect-square">
+                        <div class="text-3xl font-black">EL GAP</div>
+                        <div class="text-5xl my-2">💔</div>
+                        <div class="text-xl font-bold">DÉFICIT DE CONFIANZA</div>
+                    </div>
+
+                    
+                    <div class="text-center w-full md:w-1/3 p-4 border-2 border-dashed border-blue-300 rounded-lg bg-blue-50">
+                        <div class="text-4xl mb-2">📱</div>
+                        <h4 class="text-lg font-bold text-blue-800">Apps y cuidadores informales</h4>
+                        <p class="font-semibold text-green-700 mt-2">Fortaleza: Conveniencia y flexibilidad.</p>
+                        <p class="font-semibold text-red-700 mt-1">Debilidad: Sin vetting, sin seguros, calidad inconsistente, alto riesgo.</p>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section id="opportunities" class="mb-12">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-[#003f5c]">4. Redefiniendo el estándar: Oportunidades estratégicas clave</h2>
+                    <p class="text-slate-600 mt-2 max-w-3xl mx-auto">La oportunidad no está en competir, sino en crear una categoría superior. Un nuevo actor puede posicionarse como la solución definitiva basada en confianza, especialización y tecnología.</p>
+                </div>
+                
+                <div class="relative">
+                    <div class="opportunity-line"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                        <div class="opportunity-card bg-white p-6 rounded-lg shadow-xl border-t-4 border-[#374c80] text-center">
+                            <div class="text-4xl text-[#374c80] mb-3">🛡️</div>
+                            <h3 class="text-xl font-bold text-[#003f5c]">Cuidado a domicilio de alta confianza</h3>
+                            <p class="text-sm text-slate-500 mt-2">El servicio más deseado. Un modelo con cuidadores profesionales, verificados y asegurados que mantienen al gato seguro y feliz en su propio hogar 🐱🏡.</p>
+                        </div>
+
+                        
+                        <div class="opportunity-card bg-white p-6 rounded-lg shadow-xl border-t-4 border-[#7a5195] text-center">
+                            <div class="text-4xl text-[#7a5195] mb-3">🎯</div>
+                            <h3 class="text-xl font-bold text-[#003f5c]">Especialización en nichos</h3>
+                            <p class="text-sm text-slate-500 mt-2">Capturar segmentos desatendidos y de alto valor como el cuidado experto para gatos, animales geriátricos o con necesidades médicas especiales.</p>
+                        </div>
+
+                        
+                        <div class="opportunity-card bg-white p-6 rounded-lg shadow-xl border-t-4 border-[#bc5090] text-center">
+                             <div class="text-4xl text-[#bc5090] mb-3">🤝</div>
+                            <h3 class="text-xl font-bold text-[#003f5c]">Canal B2B y Alianzas</h3>
+                            <p class="text-sm text-slate-500 mt-2">Un océano azul. Crear alianzas con hoteles pet-friendly, ofrecer beneficios corporativos y colaborar con proyectos inmobiliarios.</p>
+                        </div>
+
+                        
+                        <div class="opportunity-card bg-white p-6 rounded-lg shadow-xl border-t-4 border-[#ffa600] text-center">
+                             <div class="text-4xl text-[#ffa600] mb-3">💡</div>
+                            <h3 class="text-xl font-bold text-[#003f5c]">Tecnología para la transparencia</h3>
+                            <p class="text-sm text-slate-500 mt-2">Usar la tecnología no solo para reservar, sino para dar tranquilidad: GPS en vivo, reportes con fotos/videos y telemedicina integrada.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="bg-[#003f5c] text-white text-center p-6 mt-12">
+            <p class="font-bold">El futuro del cuidado de animales de compañía en Colombia no es más barato, es más confiable.</p>
+            <p class="text-sm opacity-80 mt-1">La empresa que logre construir una marca sinónimo de seguridad, profesionalismo y tranquilidad se convertirá en el líder indiscutible del mercado.</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const wrapLabel = (label) => {
+                const maxLength = 16;
+                if (typeof label !== 'string' || label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine += ' ' + word;
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+            
+            const sharedTooltipOptions = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            };
+            
+            const brilliantBluesPalette = {
+                darkBlue: '#003f5c',
+                midBlue: '#374c80',
+                purple: '#7a5195',
+                pink: '#bc5090',
+                orange: '#ff764a',
+                yellow: '#ffa600'
+            };
+
+            
+            const globalMarketCtx = document.getElementById('globalMarketChart');
+            if(globalMarketCtx) {
+                new Chart(globalMarketCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2024', '2026', '2028', '2030'],
+                        datasets: [{
+                            label: 'Tamaño del Mercado (en miles de millones de USD)',
+                            data: [2.68, 3.36, 4.20, 5.14],
+                            borderColor: brilliantBluesPalette.pink,
+                            backgroundColor: 'rgba(188, 80, 144, 0.2)',
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: brilliantBluesPalette.pink,
+                            pointBorderColor: '#fff',
+                            pointHoverRadius: 7,
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: brilliantBluesPalette.pink,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + value + 'B';
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                           ...sharedTooltipOptions.plugins,
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+
+            
+            const petTypeShareCtx = document.getElementById('petTypeShareChart');
+            if(petTypeShareCtx) {
+                new Chart(petTypeShareCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Perros', 'Gatos'],
+                        datasets: [{
+                            label: 'Cuota de Mercado',
+                            data: [82.9, 17.1],
+                            backgroundColor: [
+                                brilliantBluesPalette.midBlue,
+                                '#e2e8f0' 
+                            ],
+                            borderColor: '#fff',
+                            borderWidth: 4,
+                            hoverOffset: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            ...sharedTooltipOptions.plugins,
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 15
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>

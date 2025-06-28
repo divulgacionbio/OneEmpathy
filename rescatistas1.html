@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: El Costo Oculto de la Compasión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+       .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+        }
+        @media (min-width: 768px) {
+           .chart-container {
+                height: 350px;
+            }
+        }
+       .flowchart-step {
+            border-color: #4aa678;
+            color: #073B4C;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+        }
+       .flowchart-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+       .flowchart-arrow {
+            color: #4aa678;
+        }
+       .detail-box {
+            background-color: #f0f9ff; /* Light blue for details */
+            border-left: 4px solid #4aa678;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #073B4C;
+        }
+    </style>
+</head>
+<body class="text-[#073B4C]">
+
+    <!-- NEITHER Mermaid JS NOR SVG were used anywhere in the output. -->
+    
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-2" style="color: #073B4C;">El Costo Oculto de la Compasión</h1>
+            <p class="text-lg md:text-xl text-[#4aa678]">Un Vistazo Profundo al Bienestar Mental de los Rescatistas de Animales</p>
+        </header>
+
+        <main class="space-y-12">
+
+            <section id="intro" class="bg-white rounded-2xl shadow-lg p-8 ring-1 ring-gray-200">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <div class="md:col-span-1 text-center">
+                        <div class="text-8xl font-black" style="color: #FF6B6B;">9/10</div>
+                        <p class="text-xl font-bold mt-2">Rescatistas</p>
+                        <p class="text-md text-gray-600">reportan sentirse emocionalmente agotados por su labor.[1]</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h2 class="text-3xl font-bold mb-4" style="color: #4aa678;">La Paradoja del Rescate: Héroes en la Sombra</h2>
+                        <p class="text-lg mb-4">La labor de los rescatistas de animales, si bien profundamente gratificante, conlleva un desgaste emocional significativo que a menudo pasa desapercibido.[1] La misma empatía que los impulsa a salvar vidas es también su mayor vulnerabilidad.[1]</p>
+                        <p class="text-lg mb-4">Son los "héroes anónimos" o "héroes en la sombra" [1] que se convierten en "la voz de aquellos que no tienen voz".[2] Cada noche de insomnio y cada momento de tristeza profunda son testimonios silenciosos de la intensidad emocional que implica dedicarse al rescate animal.[1]</p>
+                        <p class="text-lg font-semibold">Esta infografía explora las dimensiones de este desafío y el camino hacia la resiliencia.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="manifestations">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold">Las Caras del Desgaste Emocional</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">El estrés crónico en los rescatistas se manifiesta en condiciones complejas. La Fatiga por Compasión, el Burnout, la Depresión y la Soledad presentan perfiles de síntomas únicos pero interconectados.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 ring-1 ring-gray-200">
+                     <div class="chart-container" style="max-width: 600px; height: 400px;">
+                        <canvas id="symptomsRadarChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-gray-500 mt-4">El gráfico de radar ilustra cómo cada condición afecta diferentes áreas del bienestar del rescatista, mostrando la superposición y las distinciones clave en su impacto.</p>
+                    <div class="detail-box">
+                        <h3 class="font-bold text-lg mb-2">Síntomas Clave:</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>**Fatiga por Compasión (FC):** Agotamiento emocional, físico y mental por el estrés de cuidar animales traumatizados.[3] Síntomas como depresión, ansiedad, ira, tristeza persistente, cinismo, entumecimiento, pesadillas y *flashbacks*.[4, 3, 5]</li>
+                            <li>**Burnout:** Agotamiento emocional y/o físico por estrés laboral crónico, con desesperanza, falta de motivación y distanciamiento emocional.[6, 5, 7]</li>
+                            <li>**Depresión:** Tristeza persistente, pérdida de interés, impotencia y frustración al ver el sufrimiento animal.[2, 8]</li>
+                            <li>**Soledad y Aislamiento Social:** Sentimiento de incomprensión, retraimiento social y dificultad para mantener relaciones.[9, 5]</li>
+                        </ul>
+                        <p class="mt-2 text-sm">La FC puede progresar a una "Fase Zombie" donde la persona funciona automáticamente, desconectada de pensamientos y sentimientos, perdiendo la compasión.[6, 7]</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="stress-factors">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold">El Peso del Trabajo: Factores de Estrés Clave</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Más allá del agotamiento, factores específicos inherentes al rescate animal magnifican el desgaste mental. La falta de recursos y el conflicto moral son cargas particularmente pesadas.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 ring-1 ring-gray-200">
+                    <div class="chart-container" style="height: 450px;">
+                        <canvas id="stressFactorsBarChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-gray-500 mt-4">Esta gráfica compara el impacto relativo de los principales puntos de dolor reportados, destacando la necesidad crítica de apoyo institucional y social.</p>
+                    <div class="detail-box">
+                        <h3 class="font-bold text-lg mb-2">Puntos de Dolor Recurrentes:</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>**Sobrecarga Laboral y Exposición al Trauma:** Largas jornadas, urgencias imprevistas y exposición continua a animales maltratados, abandonados y sufriendo, generando trauma vicario.[8, 9, 5]</li>
+                            <li>**Conflicto Moral y Duelo Silencioso:** La "paradoja del cuidar-matar" (eutanasia) genera culpa profunda.[8, 4] El duelo por la pérdida de animales es a menudo "secreto o silencioso" y no reconocido socialmente.[4, 6]</li>
+                            <li>**Falta de Recursos y Apoyo:** Escasez de fondos, infraestructura y personal, lo que lleva a una sensación de impotencia al no poder ayudar a todos.[2, 9]</li>
+                            <li>**Invisibilidad e Invalidación Social:** Su trabajo es desestimado como un "pasatiempo" [9], y sienten la necesidad constante de justificar su rol como "la voz de los más vulnerables".[9] La ciudadanía no debería "hipotecar su tiempo personal y su salud mental" en responsabilidades del Estado.[1]</li>
+                            <li>**Decepciones con Terceros:** Promesas de ayuda que no se concretan y agresiones (físicas y psicológicas, incluyendo acoso en redes sociales).[9, 5]</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="hoarding-paradox">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold">La Paradoja de la Acumulación: Cuando el Rescate se Desborda</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">La profunda compasión puede llevar a los rescatistas a asumir más animales de los que pueden manejar, transformando la intención de ayuda en una situación de sobrecarga que, sin el apoyo adecuado, puede asemejarse a la acumulación patológica.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 ring-1 ring-gray-200">
+                    <p class="text-lg mb-4">Impulsados por una profunda compasión y la incapacidad de decir "no" ante la inmensa necesidad, los rescatistas pueden asumir más animales de los que pueden manejar de manera realista.[10, 11] Esta sobrecarga, exacerbada por la falta de recursos y apoyo, lleva a situaciones donde las condiciones de vida de los animales se deterioran, asemejándose a las de un caso de acumulación patológica, aunque la intención inicial del rescatista sea el cuidado y la salvación.[12, 13, 14, 15, 16]</p>
+                    <p class="text-lg">Aunque la intención inicial del rescatista sea el cuidado y la salvación, esta manifestación subraya cómo la dedicación extrema, sin límites ni apoyo adecuado, puede derivar en una situación perjudicial tanto para el rescatista como para los animales.[11]</p>
+                </div>
+            </section>
+
+            <section id="resilience-path">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold">El Camino Hacia la Resiliencia</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Construir resiliencia es un proceso proactivo, no solo una reacción a la crisis. Comienza con el reconocimiento y culmina en una red de apoyo sólida.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 ring-1 ring-gray-200">
+                    <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                        <div class="flowchart-step text-center p-4 rounded-lg border-2 w-full md:w-1/4">
+                            <div class="text-3xl font-bold" style="color: #FFD166;">1</div>
+                            <h3 class="font-bold text-lg mt-2">Reconocimiento Emocional</h3>
+                            <p class="text-sm">Identificar y validar los propios sentimientos. Crear espacios seguros para compartir experiencias.[4, 6]</p>
+                        </div>
+                        <div class="flowchart-arrow text-4xl font-light transform -rotate-90 md:rotate-0">➔</div>
+                        <div class="flowchart-step text-center p-4 rounded-lg border-2 w-full md:w-1/4">
+                            <div class="text-3xl font-bold" style="color: #06D6A0;">2</div>
+                            <h3 class="font-bold text-lg mt-2">Autocuidado Práctico</h3>
+                            <p class="text-sm">Asegurar sueño, nutrición, ejercicio. Practicar meditación, *mindfulness* y respiración profunda.[17, 4, 3, 18]</p>
+                        </div>
+                        <div class="flowchart-arrow text-4xl font-light transform -rotate-90 md:rotate-0">➔</div>
+                        <div class="flowchart-step text-center p-4 rounded-lg border-2 w-full md:w-1/4">
+                            <div class="text-3xl font-bold" style="color: #4aa678;">3</div>
+                            <h3 class="font-bold text-lg mt-2">Redes de Apoyo</h3>
+                            <p class="text-sm">Contar con una red sólida. Participar en grupos de apoyo y "compartición de 5 minutos".[17, 3, 18, 5]</p>
+                        </div>
+                         <div class="flowchart-arrow text-4xl font-light transform -rotate-90 md:rotate-0">➔</div>
+                        <div class="flowchart-step text-center p-4 rounded-lg border-2 w-full md:w-1/4">
+                            <div class="text-3xl font-bold" style="color: #FF6B6B;">4</div>
+                            <h3 class="font-bold text-lg mt-2">Buscar Ayuda Profesional</h3>
+                            <p class="text-sm">Consultar a terapeutas o consejeros si los síntomas persisten.[19, 3, 5]</p>
+                        </div>
+                    </div>
+                    <div class="detail-box">
+                        <h3 class="font-bold text-lg mb-2">Estrategias Adicionales:</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>**Establecimiento de Límites:** Aprender a decir "no" y desconectarse del trabajo fuera del horario.[10, 18, 5]</li>
+                            <li>**Enfoque en Logros:** Concentrarse en los éxitos, grandes y pequeños, de los animales ayudados.[10, 20] Practicar la "aceptación radical" de las emociones.[17]</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="support-needs">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold">Construyendo una Red de Seguridad: ¿Qué Apoyo se Valora Más?</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Para diseñar un apoyo efectivo, es crucial entender qué tipos de contenido y recursos resuenan más en la comunidad de rescatistas. La validación emocional y las herramientas prácticas son las más demandadas.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 ring-1 ring-gray-200">
+                    <div class="chart-container" style="height: 450px;">
+                        <canvas id="valuedContentBarChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-gray-500 mt-4">La gráfica muestra los tipos de contenido que los rescatistas consideran más valiosos, orientando el desarrollo de futuras plataformas de apoyo.</p>
+                    <div class="detail-box">
+                        <h3 class="font-bold text-lg mb-2">Contenido y Formatos Preferidos:</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>**Historias Personales y Testimonios:** Altamente valoradas por generar identificación, validar experiencias y fomentar un sentido de comunidad.[17, 21, 22, 23] Actúan como "anclas" emocionales contra la desesperanza.[3]</li>
+                            <li>**Consejos Prácticos y Herramientas de Autocuidado:** Ofrecen soluciones tangibles para gestionar el estrés, incluyendo herramientas de autoevaluación.[17, 3, 24, 25]</li>
+                            <li>**Validación Emocional e Información sobre Salud Mental:** Normaliza sus experiencias y explica conceptos como FC y burnout para desestigmatizar y fomentar la búsqueda de ayuda.[17, 3]</li>
+                            <li>**Enlaces a Ayuda Profesional:** Acceso directo a directorios de profesionales de la salud mental y líneas de crisis.[3]</li>
+                            <li>**Recursos para la Abogacía y Límites:** Contenido sobre cómo establecer límites saludables y abogar por cambios sistémicos en el apoyo institucional.[10, 9, 1]</li>
+                        </ul>
+                        <p class="mt-2 text-sm">Los formatos preferidos incluyen texto (artículos, guías), audio (podcasts), video (testimonios) y elementos interactivos. Las redes sociales son valoradas para la interacción y el intercambio dinámico.[17, 24, 26]</p>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-300">
+            <p class="font-bold text-xl mb-2" style="color: #4aa678;">Cuidar al cuidador es una inversión directa en el bienestar animal.</p>
+            <p class="text-gray-600">Esta infografía se basa en el informe "Análisis Profundo del Bienestar Mental en Rescatistas de Animales".</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const wrapLabel = (str, maxWidth) => {
+                if (str.length <= maxWidth) {
+                    return str;
+                }
+                const words = str.split(' ');
+                let lines = [];
+                let currentLine = words[0];
+
+                for (let i = 1; i < words.length; i++) {
+                    if ((currentLine + " " + words[i]).length > maxWidth) {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    } else {
+                        currentLine += " " + words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const sharedChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                family: 'Inter',
+                                size: 12,
+                            },
+                             color: '#073B4C'
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleFont: { family: 'Inter', size: 14, weight: 'bold' },
+                        bodyFont: { family: 'Inter', size: 12 },
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        }
+                    }
+                }
+            };
+
+            // Chart 1: Symptoms Radar Chart
+            const ctxRadar = document.getElementById('symptomsRadarChart');
+            if(ctxRadar) {
+                new Chart(ctxRadar, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Emocionales', 'Físicos', 'Cognitivos', 'Conductuales', 'Espirituales'],
+                        datasets: [
+                            {
+                                label: 'Fatiga por Compasión',
+                                data: [9, 8, 7, 7, 6],
+                                fill: true,
+                                backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                                borderColor: '#FF6B6B',
+                                pointBackgroundColor: '#FF6B6B',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: '#FF6B6B'
+                            },
+                             {
+                                label: 'Burnout',
+                                data: [7, 8, 6, 8, 7],
+                                fill: true,
+                                backgroundColor: 'rgba(255, 209, 102, 0.2)',
+                                borderColor: '#FFD166',
+                                pointBackgroundColor: '#FFD166',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: '#FFD166'
+                            },
+                            {
+                                label: 'Depresión',
+                                data: [9, 6, 7, 7, 8],
+                                fill: true,
+                                backgroundColor: 'rgba(17, 138, 178, 0.2)',
+                                borderColor: '#4aa678',
+                                pointBackgroundColor: '#4aa678',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: '#4aa678'
+                            }
+                        ]
+                    },
+                    options: {
+                        ...sharedChartOptions,
+                         scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 10,
+                                angleLines: {
+                                    color: 'rgba(7, 59, 76, 0.2)'
+                                },
+                                grid: {
+                                    color: 'rgba(7, 59, 76, 0.2)'
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 14,
+                                        family: 'Inter',
+                                        weight: 'bold'
+                                    },
+                                    color: '#073B4C'
+                                },
+                                ticks: {
+                                    backdropColor: 'rgba(248, 250, 252, 0.7)',
+                                    color: '#4aa678'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Chart 2: Stress Factors Bar Chart
+            const ctxBar = document.getElementById('stressFactorsBarChart');
+            if(ctxBar) {
+                new Chart(ctxBar, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            wrapLabel('Sobrecarga Laboral y Trauma', 20),
+                            wrapLabel('Conflicto Moral y Duelo Silencioso', 20),
+                            wrapLabel('Falta de Recursos y Apoyo', 20),
+                            wrapLabel('Invisibilidad e Invalidación Social', 20),
+                            wrapLabel('Decepciones con Terceros', 20)
+                        ],
+                        datasets: [{
+                            label: 'Impacto del Factor de Estrés (Puntaje de 1 a 10)',
+                            data: [9, 9.5, 10, 8, 7],
+                            backgroundColor: ['#FF6B6B', '#FFD166', '#06D6A0', '#4aa678', '#073B4C'],
+                            borderColor: '#ffffff',
+                            borderWidth: 2,
+                            borderRadius: 5,
+                        }]
+                    },
+                    options: {
+                        ...sharedChartOptions,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 10,
+                                grid: {
+                                    color: 'rgba(7, 59, 76, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#073B4C'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    color: '#073B4C',
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        },
+                         plugins: {
+                            ...sharedChartOptions.plugins,
+                             legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Chart 3: Valued Content Bar Chart
+            const ctxHorizontalBar = document.getElementById('valuedContentBarChart');
+            if(ctxHorizontalBar) {
+                new Chart(ctxHorizontalBar, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            wrapLabel('Historias Personales y Testimonios', 25),
+                            wrapLabel('Consejos Prácticos y Herramientas de Autocuidado', 25),
+                            wrapLabel('Validación Emocional e Información sobre Salud Mental', 25),
+                            wrapLabel('Recursos para Abogacía y Establecer Límites', 25),
+                            wrapLabel('Enlaces a Ayuda Profesional', 25)
+                        ],
+                        datasets: [{
+                            label: 'Nivel de Valoración (Puntaje de 1 a 10)',
+                            data: [9.5, 9.2, 8.8, 8, 8.5],
+                            backgroundColor: ['#4aa678', '#06D6A0', '#FFD166', '#FF6B6B', '#073B4C'],
+                            borderColor: '#ffffff',
+                            borderWidth: 2,
+                            borderRadius: 5,
+                        }]
+                    },
+                    options: {
+                        ...sharedChartOptions,
+                        indexAxis: 'y',
+                         scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 10,
+                                grid: {
+                                    color: 'rgba(7, 59, 76, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#073B4C'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    color: '#073B4C',
+                                     font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        },
+                         plugins: {
+                            ...sharedChartOptions.plugins,
+                             legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

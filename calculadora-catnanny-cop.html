@@ -4,54 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Tarifas Rentables para una Cat Nanny</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+    
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+          /* Define la fuente principal para todo el cuerpo de la página */body {
+            font-family: 'Montserrat', sans-serif;
         }
+
+ /* Define el estilo del botón de pestaña CUANDO ESTÁ ACTIVO */
         .tab-btn.active {
-            background-color: #8B5CF6; /* violet-500 */
-            color: white;
-            font-weight: 600;
+            background-color: #4aa678; /* green-500 */
+            color: white; /* Letra blanca */
+            font-weight: 600;  /* Letra en semi-negrita */
         }
+
+/* Define una animación suave para los botones de pestaña */
         .tab-btn {
             transition: all 0.3s ease-in-out;
         }
+
+ /* Define el estilo de las casillas de entrada amarillas */
         .input-yellow {
             background-color: #FEF9C3; /* yellow-100 */
             border-color: #FBBF24; /* amber-400 */
         }
+
+/* Define un "resplandor" cuando se hace clic en una casilla amarilla */
         .input-yellow:focus {
             box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.4);
-            outline: none;
+            outline: none; /* Quita el borde por defecto del navegador */
         }
+
+/* Define el estilo de las cajas de resultados importantes (las de tarifa por hora) */
         .result-green {
-            background-color: #D1FAE5; /* green-100 */
-            color: #065F46; /* green-800 */
-            font-weight: 700;
+            background-color: #f7fffb; /* texto green-100 claro*/ 
+            color: #2a62a3; /* texto blue-800 oscuro*/
+            font-weight: 700; /* Texto en negrita */
         }
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4C1D95; /* violet-900 */
-            border-bottom: 2px solid #C4B5FD; /* violet-300 */
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+
+/* Define el estilo para los TÍTULOS DE CADA SECCIÓN (A, B, etc.) */
+       .section-title {
+    font-size: 1.5rem; /* Tamaño de letra grande */
+    font-weight: 700;  /* Letra en negrita */
+    color: #2a62a3; /* Color del texto azul (del kit) */
+    border-bottom: 2px solid #dddddd; /* Línea separadora gris claro */
+    padding-bottom: 0.5rem;  /* Espacio entre el texto y la línea */
+    margin-bottom: 1.5rem;  /* Espacio debajo de la línea */
         }
+
+/* Define el estilo para los pequeños iconos emoji */
         .icon-emoji {
-            font-size: 1.25rem;
-            margin-right: 0.5rem;
+            font-size: 1.25rem;  /* Tamaño del emoji */
+            margin-right: 0.5rem;  * Espacio a la derecha del emoji */
         }
+
+/* === ESTILOS PARA EL FOOTER (INCLUYE VARIABLES) === */
+        
+        /* Definimos las variables que usará el footer */
+        :root {
+            --color-primario: #2a62a3;   /* El azul que definimos para los títulos */
+            --color-fondo: #fdfdfd;       /* El blanco de fondo */
+            --color-texto-invertido: rgba(255, 255, 255, 0.8); /* Blanco con 80% de opacidad */
+            --tamano-texto-pequeno: 0.875rem; /* 14px */
+            --espacio-l: 2rem;   /* 32px */
+            --espacio-xl: 4rem;  /* 64px, un poco menos que el original para mejor proporción */
+        }
+        
+        /* Los estilos que tú me proporcionaste */
+        .footer-marca {
+            background-color: var(--color-primario);
+            color: var(--color-fondo);
+            text-align: center;
+            margin-top: var(--espacio-xl);
+            padding: var(--espacio-l) 0;
+        }
+
+        .footer-marca .subtexto {
+            font-size: var(--tamano-texto-pequeno);
+            color: var(--color-texto-invertido);
+        }
+
     </style>
+
 </head>
-<body class="bg-violet-50 text-gray-800 antialiased">
+<body class="bg-gray-50 text-gray-800 antialiased">
 
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
 
         <header class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-violet-800">Calculadora de tarifas rentables</h1>
-            <p class="text-lg text-violet-600 mt-2">😻😻😻😻😻 Cat Nanny 5⭐⭐⭐⭐⭐</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-800">Tu calculadora de tarifas rentables</h1>
+            <p class="text-lg text-blue-600 mt-2">😻😻😻😻😻⭐⭐⭐⭐⭐</p>
         </header>
 
         <!-- Controles de Pestañas -->
@@ -60,15 +105,20 @@
                 Instrucciones
             </button>
             <button id="btn-calculator" class="tab-btn active w-full py-2 px-4 rounded-md">
-                Calculadora
+                Calculadora COP
             </button>
         </div>
 
         <!-- Pestaña de Instrucciones -->
-        <div id="instructions-content" class="bg-white p-6 rounded-lg shadow-md hidden">
-            <h2 class="section-title"><span class="icon-emoji">📖</span>¡Bienvenida, futura empresaria!</h2>
+       <div id="instructions-content" class="bg-white p-6 rounded-lg shadow-md">
+    <h2 class="section-title"><span class="icon-emoji">📖</span>¡Te damos la bienvenida <span id="name-placeholder"></span>!</h2>
+    
+    <div class="mb-6">
+        <label for="userName" class="block text-sm font-medium text-gray-700 mb-2 font-semibold">Para empezar, ¿cuál es tu nombre?</label>
+        <input type="text" id="userName" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-violet-300 focus:border-violet-400 outline-none" placeholder="Escribe tu nombre aquí...">
+    </div>
             <p class="mb-4 text-gray-700">Esta no es solo una hoja de cálculo, es una herramienta indispensable para complementar tu negocio y hacerlo rentable y sostenible. Di adiós a las adivinanzas y hola a la claridad financiera.</p>
-            <p class="mb-4 font-semibold text-violet-700">Sigue estos sencillos pasos para descubrir tu poder:</p>
+            <p class="mb-4 font-semibold text-green-700">Sigue estos sencillos pasos para descubrir tu poder:</p>
             <ol class="list-decimal list-inside space-y-3 text-gray-600">
                 <li>Ve a la pestaña <strong>'Calculadora'</strong>.</li>
                 <li>Rellena <strong>ÚNICAMENTE</strong> las celdas de color amarillo <span class="inline-block px-2 py-1 text-sm rounded-md bg-yellow-100 border border-yellow-300">🟡</span>.</li>
@@ -82,7 +132,7 @@
             
             <!-- Sección A: Meta de Ingresos -->
             <section class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="section-title"><span class="icon-emoji">몽</span>Sección A: Tu meta de ingresos (El Sueño)</h2>
+                <h2 class="section-title"><span class="icon-emoji">🎯</span>Sección A: Tu meta de ingresos (El Sueño)</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="monthlyGoal" class="block text-sm font-medium text-gray-700 mb-1">¿Cuánto te gustaría ganar al mes (neto)?</label>
@@ -115,39 +165,43 @@
                 </div>
                  <div class="mt-6">
                     <p class="text-sm font-medium text-gray-700">Costo Fijo Mensual Total:</p>
-                    <p id="totalFixedCost" class="text-xl font-bold text-violet-800 p-2 bg-violet-100 rounded-md">$0</p>
+                    <p id="totalFixedCost" class="text-xl font-bold text-blue-800 p-2 bg-green-50 rounded-md">$0</p>
                 </div>
             </section>
 
             <!-- Sección D: Resultados -->
-            <section class="bg-gradient-to-br from-violet-600 to-purple-700 p-6 rounded-lg shadow-lg text-white">
-                 <h2 class="text-2xl font-bold mb-4 text-center"><span class="icon-emoji">🎉</span>¡Tus tarifas para un servicio de calidad!</h2>
-                <div class="space-y-6">
+
+                <section class="bg-gradient-to-br from-blue-500 to-green-500 p-6 rounded-lg shadow-lg text-white">  
+                <h2 class="text-2xl font-bold mb-4 text-center"><span class="icon-emoji">📑</span>Tus tarifas para un servicio Cat Nanny de calidad</h2>
+                <div class="space-y-6">  
+                  
                     <!-- Tarifa Mínima por Hora -->
                     <div class="bg-white/20 p-4 rounded-lg">
-                        <p class="text-sm font-medium uppercase tracking-wider opacity-90">Tu Tarifa Mínima por Hora</p>
+                        <p class="text-sm font-medium uppercase tracking-wider opacity-90">Tarifa Mínima por Hora</p>
                         <p id="minRateOutput" class="text-3xl font-bold result-green p-3 rounded-md text-center mt-2">$0</p>
                         <p class="text-xs text-center mt-2 opacity-80">Esta es tu base. Cobrar menos significa que no estás alcanzando tus metas.</p>
                     </div>
                     <!-- Tarifa Objetivo por Hora -->
                     <div class="bg-white/20 p-4 rounded-lg">
-                        <p class="text-sm font-medium uppercase tracking-wider opacity-90">Tu Tarifa Objetivo por Hora (con 15% de margen)</p>
+                        <p class="text-sm font-medium uppercase tracking-wider opacity-90">Tarifa Objetivo por Hora (con 15% de margen)</p>
                         <p id="targetRateOutput" class="text-3xl font-bold result-green p-3 rounded-md text-center mt-2">$0</p>
                         <p class="text-xs text-center mt-2 opacity-80">Esta es la tarifa que te permite crecer y reinvertir. ¡Apunta a esta!</p>
                     </div>
+
+
                     <!-- Tarifas por Servicio -->
                     <div>
                         <p class="text-sm font-medium uppercase tracking-wider opacity-90 text-center mb-2">Tarifas Sugeridas por Servicio</p>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                            <div class="bg-white/90 text-violet-800 p-3 rounded-md">
+                            <div class="bg-white/90 text-green-800 p-3 rounded-md">
                                 <p class="font-semibold">Visita Express (30 min)</p>
                                 <p id="expressVisitRate" class="text-2xl font-bold mt-1">$0</p>
                             </div>
-                            <div class="bg-white text-violet-900 p-4 rounded-md shadow-lg scale-105">
+                            <div class="bg-white text-green-900 p-4 rounded-md shadow-lg scale-105">
                                 <p class="font-bold">Visita Estándar<br>(60 min)</p>
                                 <p id="standardVisitRate" class="text-3xl font-bold mt-1">$0</p>
                             </div>
-                            <div class="bg-white/90 text-violet-800 p-3 rounded-md">
+                            <div class="bg-white/90 text-green-800 p-3 rounded-md">
                                 <p class="font-semibold">Visita Extendida<br>(90 min)</p>
                                 <p id="extendedVisitRate" class="text-2xl font-bold mt-1">$0</p>
                             </div>
@@ -158,9 +212,30 @@
         </div>
     </div>
 
+</div> <footer class="footer-marca">
+        <p>&copy; 2025 Maestría Cat Nanny</p>
+        <p class="subtexto">Una herramienta para profesionales del cuidado felino. Elaboración propia de One Empathy Foundation.
+    </footer>
+
     <script>
         // --- DOM Elements ---
         const inputs = document.querySelectorAll('input[type="number"]');
+// --- Personalización del Saludo ---
+        const userNameInput = document.getElementById('userName');
+        const namePlaceholder = document.getElementById('name-placeholder');
+
+        // Este "escuchador" se activa cada vez que el usuario escribe una letra
+        userNameInput.addEventListener('input', () => {
+            const name = userNameInput.value;
+
+            // Si la caja de texto está vacía, vuelve a poner el texto original
+            if (name.trim() === '') {
+                namePlaceholder.textContent = 'Cat Nanny de élite';
+            } else {
+                // Si hay texto, lo pone en el saludo
+                namePlaceholder.textContent = name;
+            }
+        });
         
         // Tab elements
         const btnInstructions = document.getElementById('btn-instructions');
